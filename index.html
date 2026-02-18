@@ -191,12 +191,35 @@
             color: var(--accent);
         }
 
+        .nav-links.active {
+            display: flex !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(26, 47, 47, 1); /* 確保背景不透明 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000; /* 確保選單 z-index 高於 10000 */
+        }
+
+        .nav-links.active li {
+            margin: 20px 0;
+        }
+
+        .nav-links.active a {
+            font-size: 1.5rem;
+            color: var(--white) !important;
+        }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 8px;
-            z-index: 1001;
+            z-index: 10001; /* 確保漢堡圖示 z-index 足夠高 */
         }
 
         .menu-toggle span {
@@ -331,10 +354,10 @@
 
         .magazine-text p {
             margin-bottom: 30px;
-            color: #555;
+            color: #222; /* 加深內文顏色以提升閱讀對比度 */
             font-size: 1.1rem;
             text-align: justify;
-            font-weight: 300;
+            font-weight: 400; /* 加粗一點字重 */
         }
 
         .magazine-img-wrapper {
@@ -1486,22 +1509,19 @@
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
-        const navbar = document.getElementById('navbar');
 
         menuToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if(navLinks.style.display === 'flex') {
-                navLinks.style.position = 'fixed';
-                navLinks.style.top = '0';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.height = '100vh';
-                navLinks.style.backgroundColor = 'rgba(26, 47, 47, 0.98)';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.justifyContent = 'center';
-                navLinks.style.alignItems = 'center';
-                navLinks.style.zIndex = '1000';
-            }
+            navLinks.classList.toggle('active');
+            // 切換漢堡圖示動畫 (可選)
+            menuToggle.classList.toggle('is-active');
+        });
+
+        // 點擊連結後自動收合選單
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
         });
 
         // Carousel Logic
