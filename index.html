@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>迪噢叢林旅宿 | The Jungle House - 恆春墾丁包棟民宿</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Lightbox CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary: #006D5B; /* 深叢林綠 */
             --dark: #1A2F2F;
             --accent: #D4A373; /* 沙灘金 */
-            --light: #F8F9FA;
+            --light: #FBFBF9;
             --white: #FFFFFF;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 20px 40px rgba(0,0,0,0.05);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -32,21 +35,23 @@
         }
 
         body {
-            font-family: 'Noto Sans TC', sans-serif;
+            font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.8;
+            line-height: 2; /* 增加行高 */
             overflow-x: hidden;
+            letter-spacing: 0.05em;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', 'Noto Sans TC', serif;
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             position: relative;
             z-index: 2;
         }
@@ -55,12 +60,33 @@
         .leaf-decoration {
             position: absolute;
             z-index: 1;
-            opacity: 0.1;
+            opacity: 0.08;
             pointer-events: none;
+            filter: grayscale(20%);
         }
 
-        .leaf-1 { top: 100px; right: -50px; width: 300px; transform: rotate(15deg); }
-        .leaf-2 { bottom: 100px; left: -100px; width: 400px; transform: rotate(-15deg); }
+        .leaf-1 { top: 10%; right: -5%; width: 400px; transform: rotate(15deg); }
+        .leaf-2 { bottom: 5%; left: -10%; width: 500px; transform: rotate(-15deg); }
+        .leaf-3 { top: 40%; left: -5%; width: 350px; opacity: 0.05; transform: rotate(45deg); }
+
+        /* SVG Section Dividers */
+        .section-divider {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 5;
+        }
+        .divider-top { top: -1px; transform: rotate(180deg); }
+        .divider-bottom { bottom: -1px; }
+        .section-divider svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+            fill: var(--light);
+        }
 
         /* --- Navigation --- */
         nav {
@@ -71,22 +97,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 50px;
+            padding: 40px 60px;
             z-index: 1000;
             transition: var(--transition);
         }
 
         nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 15px 50px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.03);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
+            z-index: 1001;
         }
 
         .logo-text-wrapper {
@@ -96,51 +124,59 @@
 
         .logo-cn {
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--white);
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            transition: var(--transition);
         }
 
         .logo-en {
             font-family: 'Dancing Script', cursive;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--white);
-            margin-top: -5px;
+            margin-top: -2px;
+            transition: var(--transition);
+            opacity: 0.9;
         }
 
-        nav.scrolled .logo-cn { color: var(--primary); }
-        nav.scrolled .logo-en { color: var(--accent); }
+        nav.scrolled .logo-cn, .nav-active .logo-cn { color: var(--primary); }
+        nav.scrolled .logo-en, .nav-active .logo-en { color: var(--accent); }
 
         .logo img {
-            height: 45px;
+            height: 50px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: var(--transition);
         }
+
+        nav.scrolled .logo img { border-color: var(--primary); }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 40px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--white);
-            font-weight: 500;
+            font-weight: 400;
             transition: var(--transition);
-            font-size: 1rem;
+            font-size: 0.95rem;
             position: relative;
+            letter-spacing: 2px;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: -8px;
+            left: 50%;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: var(--accent);
             transition: var(--transition);
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover::after {
@@ -155,164 +191,227 @@
             color: var(--accent);
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 8px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        nav.scrolled .menu-toggle span, .nav-active .menu-toggle span {
+            background-color: var(--primary);
+        }
+
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('../photo/公共空間/1.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.15)), url('../photo/公共空間/1.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: var(--white);
+            position: relative;
         }
 
-        .hero-content h1 {
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
             font-size: 5rem;
-            margin-bottom: 10px;
-            letter-spacing: 8px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .hero-content p {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            font-weight: 300;
+            margin-bottom: 30px;
             letter-spacing: 10px;
-            opacity: 0.9;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 45px;
+            padding: 18px 50px;
             background-color: var(--accent);
             color: var(--white);
             text-decoration: none;
             border-radius: 0;
-            font-weight: 700;
+            font-weight: 600;
             transition: var(--transition);
             border: 1px solid var(--accent);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 20px rgba(212, 163, 115, 0.2);
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: var(--white);
-            border-color: var(--white);
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 109, 91, 0.25);
         }
 
         /* --- Section Titles --- */
         section {
-            padding: 120px 0;
+            padding: 150px 0; /* 增加呼吸感 */
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
+        }
+
+        .section-title span {
+            display: block;
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         .section-title h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary);
-            margin-bottom: 15px;
-            letter-spacing: 3px;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
         }
 
         .section-title .divider {
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 2px;
             background-color: var(--accent);
             margin: 0 auto;
         }
 
-        /* --- About --- */
-        .about-grid {
+        /* --- About Section (Magazine Style) --- */
+        .about-magazine {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 100px;
             align-items: center;
         }
 
-        .about-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-            line-height: 1.4;
+        .magazine-content {
+            padding-right: 50px;
         }
 
-        .about-text p {
-            margin-bottom: 25px;
-            color: #4a4a4a;
+        .magazine-tag {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .magazine-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .magazine-text p {
+            margin-bottom: 30px;
+            color: #555;
             font-size: 1.1rem;
             text-align: justify;
+            font-weight: 300;
         }
 
-        .about-img-wrapper {
+        .magazine-img-wrapper {
             position: relative;
+            height: 600px;
         }
 
-        .about-img-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: -20px;
-            bottom: -20px;
-            border: 2px solid var(--accent);
-            z-index: 0;
-        }
-
-        .about-img {
+        .magazine-img {
             width: 100%;
-            border-radius: 0;
-            box-shadow: var(--shadow);
-            position: relative;
-            z-index: 1;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .magazine-img-deco {
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--accent);
+            z-index: -1;
         }
 
         /* --- Carousel --- */
         .carousel-container {
-            margin-top: 100px;
+            margin-top: 150px;
         }
 
         .carousel-wrapper {
             width: 100%;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .slide {
             min-width: 100%;
-            height: 650px;
+            height: 750px;
             background-size: cover;
             background-position: center;
             cursor: pointer;
+            position: relative;
         }
+        
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        .slide:hover::after { background: rgba(0,0,0,0); }
 
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             cursor: pointer;
             z-index: 10;
             transition: var(--transition);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
-            color: var(--primary);
+            font-size: 1.5rem;
+            color: white;
         }
 
         .carousel-btn:hover {
@@ -320,14 +419,14 @@
             color: white;
         }
 
-        .prev { left: 0; }
-        .next { right: 0; }
+        .prev { left: 30px; }
+        .next { right: 30px; }
 
         /* --- Rooms --- */
         .room-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            gap: 60px;
         }
 
         .room-card {
@@ -335,91 +434,128 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .room-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-20px);
+            box-shadow: var(--shadow-hover);
         }
 
         .room-img {
-            height: 300px;
+            height: 400px;
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
         }
 
+        .room-img::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,109,91,0.2);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .room-card:hover .room-img::before {
+            opacity: 1;
+        }
+
         .room-img::after {
-            content: '查看詳情';
+            content: 'VIEW DETAILS';
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            padding: 10px 20px;
+            transform: translate(-50%, -50%) translateY(20px);
+            background: var(--white);
+            color: var(--primary);
+            padding: 12px 25px;
             opacity: 0;
             transition: var(--transition);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
         .room-card:hover .room-img::after {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) translateY(0);
         }
 
         .room-info {
-            padding: 35px;
+            padding: 45px;
         }
 
         .room-info h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
             color: var(--primary);
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .room-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 40px; height: 1px;
+            background: var(--accent);
         }
 
         .room-info p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
         .amenities {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            color: #888;
+            gap: 25px;
+            color: #999;
             font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .amenity-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         /* --- Global Amenities --- */
         .global-amenities {
-            margin-top: 100px;
+            margin-top: 150px;
             background: var(--white);
-            padding: 60px;
+            padding: 100px 60px;
             box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary);
+            position: relative;
+        }
+        
+        .global-amenities::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 4px;
+            background: var(--primary);
         }
 
         .global-amenities h3 {
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.8rem;
+            margin-bottom: 70px;
+            font-size: 2.2rem;
             color: var(--primary);
+            letter-spacing: 3px;
         }
 
         .amenities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 50px;
         }
 
         .amenity-box {
@@ -427,66 +563,89 @@
             transition: var(--transition);
         }
 
+        .amenity-box:hover {
+            transform: translateY(-10px);
+        }
+
         .amenity-box i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .amenity-box:hover i {
+            color: var(--primary);
         }
 
         .amenity-box span {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
+            color: var(--dark);
+            letter-spacing: 1px;
         }
 
         /* --- Pricing --- */
         .pricing-table-container {
             overflow-x: auto;
+            margin-top: 50px;
         }
 
         .pricing-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             background: white;
             box-shadow: var(--shadow);
         }
 
         .pricing-table th, .pricing-table td {
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            border-bottom: 1px solid #f0f0f0;
         }
 
         .pricing-table th {
             background-color: var(--primary);
             color: white;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .pricing-table td {
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 1.1rem;
+            color: #555;
         }
 
         .highlight-price {
             color: var(--accent);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
         }
 
         /* --- Rules Section --- */
         .rules-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
         }
 
         .rules-card {
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-left: 4px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+            padding: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
         }
 
         .rules-card h3 {
             color: var(--accent);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            letter-spacing: 2px;
         }
 
         .rules-list {
@@ -495,82 +654,292 @@
 
         .rules-list li {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            opacity: 0.85;
-            line-height: 1.6;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         .rules-list li::before {
-            content: '•';
+            content: '→';
             position: absolute;
             left: 0;
             color: var(--accent);
             font-weight: bold;
-            font-size: 1.2rem;
+        }
+
+        .pet-rules li::before {
+            content: '\f1b0';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+        }
+
+        .pet-friendly-card {
+            background-color: #fdfaf5 !important;
+            border: none !important;
+            box-shadow: var(--shadow);
+            color: var(--dark) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Falling Leaves Animation */
+        .leaf-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 100; /* 確保落葉在最上層 */
+        }
+
+        .falling-leaf {
+            position: absolute;
+            top: -100px;
+            color: #004d40;
+            opacity: 0.6;
+            font-size: 2rem;
+            animation: fall linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sunbeam Effect - Redesign */
+        .sunbeam-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .beam {
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 200%;
+            height: 40%;
+            background: linear-gradient(115deg, 
+                transparent 20%, 
+                rgba(255, 223, 0, 0.15) 25%, 
+                transparent 30%
+            );
+            transform: rotate(-15deg);
+            animation: beamMove 10s ease-in-out infinite alternate;
+        }
+
+        .beam:nth-child(2) {
+            top: 10%;
+            animation-delay: -2s;
+            animation-duration: 12s;
+            opacity: 0.7;
+        }
+
+        .beam:nth-child(3) {
+            top: 40%;
+            animation-delay: -5s;
+            animation-duration: 15s;
+            opacity: 0.5;
+        }
+
+        @keyframes beamMove {
+            0% { transform: translate(-10%, -10%) rotate(-15deg); }
+            100% { transform: translate(10%, 10%) rotate(-15deg); }
+        }
+
+        /* Paw Print Animation */
+        .paw-print {
+            position: absolute;
+            color: rgba(93, 64, 55, 0.25); /* 深咖啡色 (#5D4037) 透明度 0.25 */
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 2;
+            animation: pawFade 3s forwards; /* 每個腳印維持 3 秒 */
+        }
+
+        @keyframes pawFade {
+            0% { opacity: 0; transform: scale(0.8); }
+            10% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.1); }
+        }
+
+        .pet-friendly-card::after {
+            content: '\f1b0';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            font-size: 12rem;
+            color: rgba(212, 163, 115, 0.05);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .pet-friendly-card h3 {
+            color: var(--primary) !important;
+        }
+
+        .pet-friendly-card .rules-list li {
+            color: #555;
+            opacity: 1;
+        }
+
+        /* --- Reviews Section --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px; right: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(212, 163, 115, 0.1);
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .review-content {
+            font-size: 1.05rem;
+            color: #444;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .review-author::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
         }
 
         /* --- Contact --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
         }
 
         .contact-info {
-            padding: 40px;
+            padding: 60px;
             background: var(--white);
             box-shadow: var(--shadow);
         }
 
         .info-item {
             display: flex;
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .info-item i {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary);
+            width: 30px;
         }
 
         .info-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .info-item p {
+            color: #666;
+            font-weight: 300;
         }
 
         .line-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: #00B900;
             color: white;
-            padding: 12px 25px;
+            padding: 15px 30px;
             text-decoration: none;
-            font-weight: 700;
-            border-radius: 5px;
-            margin-top: 10px;
+            font-weight: 600;
+            border-radius: 0;
+            margin-top: 15px;
             transition: var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .line-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,185,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,185,0,0.2);
         }
 
         .map-container {
             height: 100%;
-            min-height: 450px;
-            box-shadow: var(--shadow);
+            min-height: 550px;
+            box-shadow: var(--shadow-hover);
+            filter: grayscale(20%) contrast(1.1);
         }
 
         /* --- FAB & Footer --- */
         .fab-container {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 50px;
+            right: 50px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -578,21 +947,21 @@
         }
 
         .fab {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             transition: var(--transition);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .fab:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.05);
         }
 
         .fab.line { background-color: #00B900; }
@@ -603,30 +972,50 @@
             background: var(--dark);
             color: white;
             text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 100px 0;
+        }
+
+        footer h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
         }
 
         footer p {
-            opacity: 0.6;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            opacity: 0.5;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 300;
         }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .about-grid, .contact-grid, .rules-wrapper { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .nav-links { display: none; }
-            nav { padding: 15px 30px; }
-            .slide { height: 450px; }
+        @media (max-width: 1200px) {
+            .about-magazine, .contact-grid { gap: 50px; }
+            .hero-title { font-size: 4rem; }
         }
 
-        @media (max-width: 600px) {
-            .hero-content h1 { font-size: 2.5rem; letter-spacing: 4px; }
-            .hero-content p { font-size: 1.2rem; letter-spacing: 5px; }
-            .section-title h2 { font-size: 2.2rem; }
-            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 992px) {
+            .about-magazine, .contact-grid, .rules-wrapper { grid-template-columns: 1fr; }
+            .magazine-content { padding-right: 0; order: 2; }
+            .magazine-img-wrapper { height: 450px; order: 1; }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            
+            nav { padding: 25px 40px; }
+            nav.scrolled { padding: 15px 40px; }
+            
+            .hero-title { font-size: 3rem; letter-spacing: 5px; }
+            section { padding: 100px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 { font-size: 2.5rem; }
+            .magazine-title { font-size: 2.5rem; }
+            .slide { height: 500px; }
+            .pricing-table th, .pricing-table td { padding: 20px 15px; font-size: 0.9rem; }
+            .highlight-price { font-size: 1.3rem; }
+            .fab-container { bottom: 30px; right: 30px; }
+            .fab { width: 55px; height: 55px; font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -635,6 +1024,7 @@
     <!-- 植物裝飾 -->
     <img src="https://www.transparentpng.com/download/tropical-leaves/tropical-leaves-png-images-5.png" class="leaf-decoration leaf-1" alt="deco">
     <img src="https://www.transparentpng.com/download/tropical-leaves/tropical-green-leaves-png-11.png" class="leaf-decoration leaf-2" alt="deco">
+    <img src="https://www.transparentpng.com/download/tropical-leaves/tropical-leaves-png-images-5.png" class="leaf-decoration leaf-3" alt="deco">
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -645,9 +1035,15 @@
                 <span class="logo-en">The Jungle House</span>
             </div>
         </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">首頁</a></li>
             <li><a href="#about">關於我們</a></li>
+            <li><a href="#shared-space">公共空間</a></li>
             <li><a href="#rooms">房型展示</a></li>
             <li><a href="#pricing">包棟房價</a></li>
             <li><a href="#rules">入住須知</a></li>
@@ -657,53 +1053,78 @@
 
     <!-- Hero Banner -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>THE JUNGLE HOUSE</h1>
-            <p>迪噢叢林旅宿</p>
-            <a href="#rooms" class="btn">Start Your Journey</a>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500" style="margin-top: 200px;">
+            <a href="#rooms" class="btn">Discover More</a>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Magazine Style) -->
     <section id="about">
+        <div class="sunbeam-container">
+            <div class="beam"></div>
+            <div class="beam"></div>
+            <div class="beam"></div>
+            <div class="beam"></div>
+        </div>
+        <!-- SVG Divider -->
+        <div class="section-divider divider-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120c64.31-27.12,143.23-28.53,207.19-22.15C253.3,101.9,292,112.55,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
         <div class="container">
-            <div class="section-title">
-                <h2>關於我們</h2>
-                <div class="divider"></div>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>翠綠叢林與湛藍海洋的時光交界</h3>
-                    <p>在國境之南的恆春半島，有一處被大片翠綠草原擁抱的隱密境地。「迪噢叢林旅宿」不僅是一座建築，更是我們為嚮往自由的靈魂所打造的避風港。在這裡，清晨的第一縷陽光會穿過葉縫灑落在您的床頭，而遠方海風攜帶的微鹹氣息，正輕輕訴說著南國的浪漫。</p>
-                    <p>我們深信旅行的真諦在於「連結」——與自然的連結、與摯友的暢談、以及與家人的溫馨時刻。整棟別墅設計融合了原始與現代，讓您在享受頂級設施的同時，亦能感受到大地最原始的律動。無論是在池畔舉杯，還是仰望恆春最純粹的星空，這裡的每一刻，都值得您屏息珍藏。</p>
-                    <p>雖然身處世外桃源般的靜謐，但您並未與世界脫節。步行可達的全聯與便利商店，以及短短 10 分鐘車程即可抵達的南灣湛藍海域，讓您的渡假生活在便利與夢幻之間取得完美平衡。</p>
+            <div class="about-magazine">
+                <div class="magazine-content" data-aos="fade-right">
+                    <span class="magazine-tag">The Story of The Jungle House</span>
+                    <h2 class="magazine-title serif">翠綠叢林與湛藍海洋的<br>時光交界</h2>
+                    <div class="magazine-text">
+                        <p>在國境之南的恆春半島，有一處被大片翠綠草原擁抱的隱密境地。「迪噢叢林旅宿」不僅是一座建築，更是我們為嚮往自由的靈魂所打造的避風港。在這裡，清晨的第一縷陽光會穿過葉縫灑落在您的床頭，而遠方海風攜帶的微鹹氣息，正輕輕訴說著南國的浪漫。</p>
+                        <p>我們深信旅行的真諦在於「連結」——與自然的連結、與摯友的暢談、以及與家人的溫馨時刻。整棟別墅設計融合了原始與現代，讓您在享受頂級設施的同時，亦能感受到大地最原始的律動。無論是在池畔舉杯，還是仰望恆春最純粹的星空，這裡的每一刻，都值得您屏息珍藏。</p>
+                        <p>雖然身處世外桃源般的靜謐，但您並未與世界脫節。步行可達的全聯與便利商店，以及短短 10 分鐘車程即可抵達的南灣湛藍海域，讓您的渡假生活在便利與夢幻之間取得完美平衡。</p>
+                    </div>
                 </div>
-                <div class="about-img-wrapper">
-                    <img src="../photo/house.png" alt="House" class="about-img">
+                <div class="magazine-img-wrapper" data-aos="fade-left">
+                    <div class="magazine-img-deco"></div>
+                    <img src="../photo/house.png" alt="House" class="magazine-img">
                 </div>
             </div>
 
             <!-- Public Space Carousel -->
-            <div class="carousel-container">
-                <div class="section-title" style="margin-bottom: 40px;">
-                    <h3 style="font-size: 1.8rem; color: var(--primary);">共享時光空間</h3>
+            <div class="carousel-container" id="shared-space" data-aos="fade-up">
+                <div class="section-title">
+                    <span>Public Space</span>
+                    <h3 class="serif" style="font-size: 2.2rem; color: var(--primary);">共享時光空間</h3>
+                    <div class="divider"></div>
                 </div>
                 <div class="carousel-wrapper">
                     <div class="carousel-track" id="carouselTrack">
-                        <a href="../photo/公共空間/1.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/1.jpg')"></a>
-                        <a href="../photo/公共空間/13F9DFB0-51CB-4609-A8A6-91EB6B8C49F5.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/13F9DFB0-51CB-4609-A8A6-91EB6B8C49F5.jpg')"></a>
-                        <a href="../photo/公共空間/61A30A02-9F6E-4B15-8EBC-F95C90B50795.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/61A30A02-9F6E-4B15-8EBC-F95C90B50795.jpg')"></a>
-                        <a href="../photo/公共空間/946CCC8F-9FE0-489C-AC01-7316012406F2.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/946CCC8F-9FE0-489C-AC01-7316012406F2.jpg')"></a>
-                        <a href="../photo/公共空間/97614D0C-B07F-4CE9-BE2E-BA31BF209A2B.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/97614D0C-B07F-4CE9-BE2E-BA31BF209A2B.jpg')"></a>
-                        <a href="../photo/公共空間/B36B316B-D146-4FC4-81DE-00E0678654F0.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/B36B316B-D146-4FC4-81DE-00E0678654F0.jpg')"></a>
-                        <a href="../photo/公共空間/B9DA8FF2-7548-445C-B0E4-B6302BCD5A93.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/B9DA8FF2-7548-445C-B0E4-B6302BCD5A93.jpg')"></a>
-                        <a href="../photo/公共空間/BD1F216E-AD6F-4960-A3D3-020E3066D203.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/BD1F216E-AD6F-4960-A3D3-020E3066D203.jpg')"></a>
-                        <a href="../photo/公共空間/EA16CD1F-9208-4C35-BF03-796B2D5EF723.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/EA16CD1F-9208-4C35-BF03-796B2D5EF723.jpg')"></a>
-                        <a href="../photo/公共空間/ED87C697-3E0B-4E85-8248-7D2DBDE39DE2.jpg" data-lightbox="public" class="slide" style="background-image: url('../photo/公共空間/ED87C697-3E0B-4E85-8248-7D2DBDE39DE2.jpg')"></a>
+                        <div class="slide" style="background-image: url('../photo/公共空間/1.jpg')" onclick="openPublicGallery(0)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/13F9DFB0-51CB-4609-A8A6-91EB6B8C49F5.jpg')" onclick="openPublicGallery(1)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/61A30A02-9F6E-4B15-8EBC-F95C90B50795.jpg')" onclick="openPublicGallery(2)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/946CCC8F-9FE0-489C-AC01-7316012406F2.jpg')" onclick="openPublicGallery(3)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/97614D0C-B07F-4CE9-BE2E-BA31BF209A2B.jpg')" onclick="openPublicGallery(4)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/B36B316B-D146-4FC4-81DE-00E0678654F0.jpg')" onclick="openPublicGallery(5)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/B9DA8FF2-7548-445C-B0E4-B6302BCD5A93.jpg')" onclick="openPublicGallery(6)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/BD1F216E-AD6F-4960-A3D3-020E3066D203.jpg')" onclick="openPublicGallery(7)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/EA16CD1F-9208-4C35-BF03-796B2D5EF723.jpg')" onclick="openPublicGallery(8)"></div>
+                        <div class="slide" style="background-image: url('../photo/公共空間/ED87C697-3E0B-4E85-8248-7D2DBDE39DE2.jpg')" onclick="openPublicGallery(9)"></div>
                     </div>
                     <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                     <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <!-- Hidden Lightbox Links for Public Space -->
+                <div style="display:none;">
+                    <a href="../photo/公共空間/1.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/13F9DFB0-51CB-4609-A8A6-91EB6B8C49F5.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/61A30A02-9F6E-4B15-8EBC-F95C90B50795.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/946CCC8F-9FE0-489C-AC01-7316012406F2.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/97614D0C-B07F-4CE9-BE2E-BA31BF209A2B.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/B36B316B-D146-4FC4-81DE-00E0678654F0.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/B9DA8FF2-7548-445C-B0E4-B6302BCD5A93.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/BD1F216E-AD6F-4960-A3D3-020E3066D203.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/EA16CD1F-9208-4C35-BF03-796B2D5EF723.jpg" data-lightbox="public"></a>
+                    <a href="../photo/公共空間/ED87C697-3E0B-4E85-8248-7D2DBDE39DE2.jpg" data-lightbox="public"></a>
                 </div>
             </div>
         </div>
@@ -712,101 +1133,146 @@
     <!-- Room Showcase -->
     <section id="rooms" style="background-color: #fff;">
         <div class="container">
-            <div class="section-title">
-                <h2>精選房型</h2>
+            <div class="section-title" data-aos="fade-up">
+                <span>Accommodation</span>
+                <h2 class="serif">精選房型</h2>
                 <div class="divider"></div>
             </div>
 
             <div class="room-grid">
                 <!-- Room 1 -->
-                <div class="room-card">
-                    <a href="../photo/親子家庭房(3人)粉/1.jpg" data-lightbox="room-pink">
-                        <div class="room-img" style="background-image: url('../photo/親子家庭房(3人)粉/1.jpg')"></div>
+                <div class="room-card" data-aos="fade-up">
+                    <a href="../photo/二人房/1.JPG" data-lightbox="二人房">
+                        <div class="room-img" style="background-image: url('../photo/二人房/1.JPG')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/二人房/IMG_3655.JPG" data-lightbox="二人房"></a>
+                        <a href="../photo/二人房/IMG_3656.JPG" data-lightbox="二人房"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>親子家庭房 (3人) - 粉</h3>
-                        <p>溫馨夢幻的粉色空間，專為小家庭設計的童趣客房。</p>
+                        <h3 class="serif">雙人房</h3>
+                        <p>簡潔優雅的兩人世界，墾丁假期的浪漫起點。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 雙人床+單人床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> KING SIZE BED</div>
+                            <div class="amenity-item"><i class="fas fa-shower"></i> ENSUITE</div>
                         </div>
                     </div>
                 </div>
                 <!-- Room 2 -->
-                <div class="room-card">
-                    <a href="../photo/親子家庭房(3人)綠/1.jpg" data-lightbox="room-green">
-                        <div class="room-img" style="background-image: url('../photo/親子家庭房(3人)綠/1.jpg')"></div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="100">
+                    <a href="../photo/四人房/1.jpg" data-lightbox="四人房">
+                        <div class="room-img" style="background-image: url('../photo/四人房/1.jpg')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/四人房/_BC_9870-HDR.jpg" data-lightbox="四人房"></a>
+                        <a href="../photo/四人房/_BC_9875-HDR.jpg" data-lightbox="四人房"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>親子家庭房 (3人) - 綠</h3>
-                        <p>綠意盎然的自然氛圍，讓您彷彿置身森林般的舒適。</p>
+                        <h3 class="serif">四人房</h3>
+                        <p>好友出遊的絕佳選擇，舒適的大床讓您一夜好眠。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 雙人床+單人床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> TWO BEDS</div>
+                            <div class="amenity-item"><i class="fas fa-shower"></i> ENSUITE</div>
                         </div>
                     </div>
                 </div>
                 <!-- Room 3 -->
-                <div class="room-card">
-                    <a href="../photo/樓中樓家庭房/1.jpg" data-lightbox="room-loft-4">
-                        <div class="room-img" style="background-image: url('../photo/樓中樓家庭房/1.jpg')"></div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="200">
+                    <a href="../photo/樓中樓六人房/1.JPG" data-lightbox="樓中樓六人房">
+                        <div class="room-img" style="background-image: url('../photo/樓中樓六人房/1.JPG')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/樓中樓六人房/_BC_9902-HDR.jpg" data-lightbox="樓中樓六人房"></a>
+                        <a href="../photo/樓中樓六人房/_BC_9905.jpg" data-lightbox="樓中樓六人房"></a>
+                        <a href="../photo/樓中樓六人房/IMG_3671.JPG" data-lightbox="樓中樓六人房"></a>
+                        <a href="../photo/樓中樓六人房/IMG_3672.JPG" data-lightbox="樓中樓六人房"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>樓中樓家庭房 (4人)</h3>
-                        <p>寬敞的樓中樓設計，動靜皆宜，享受全家人的私密時光。</p>
+                        <h3 class="serif">樓中樓六人房</h3>
+                        <p>極致寬敞的樓中樓設計，適合大家庭或好友同歡。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 二大床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> THREE BEDS</div>
+                            <div class="amenity-item"><i class="fas fa-expand"></i> DUPLEX</div>
                         </div>
                     </div>
                 </div>
                 <!-- Room 4 -->
-                <div class="room-card">
-                    <a href="../photo/二人房/1.JPG" data-lightbox="room-double">
-                        <div class="room-img" style="background-image: url('../photo/二人房/1.JPG')"></div>
+                <div class="room-card" data-aos="fade-up">
+                    <a href="../photo/樓中樓四人房/1.JPG" data-lightbox="樓中樓四人房">
+                        <div class="room-img" style="background-image: url('../photo/樓中樓四人房/1.JPG')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/樓中樓四人房/_BC_9829.jpg" data-lightbox="樓中樓四人房"></a>
+                        <a href="../photo/樓中樓四人房/IMG_3666.JPG" data-lightbox="樓中樓四人房"></a>
+                        <a href="../photo/樓中樓四人房/IMG_3669.JPG" data-lightbox="樓中樓四人房"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>精緻雙人房</h3>
-                        <p>簡潔優雅的兩人世界，墾丁假期的浪漫起點。</p>
+                        <h3 class="serif">樓中樓四人房</h3>
+                        <p>高挑的空間美學，兼具現代感與放鬆感的渡假空間。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 一大床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> TWO BEDS</div>
+                            <div class="amenity-item"><i class="fas fa-expand"></i> DUPLEX</div>
                         </div>
                     </div>
                 </div>
                 <!-- Room 5 -->
-                <div class="room-card">
-                    <a href="../photo/四人房/1.jpg" data-lightbox="room-quad">
-                        <div class="room-img" style="background-image: url('../photo/四人房/1.jpg')"></div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="100">
+                    <a href="../photo/樓中樓家庭房/1.jpg" data-lightbox="樓中樓家庭房">
+                        <div class="room-img" style="background-image: url('../photo/樓中樓家庭房/1.jpg')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/樓中樓家庭房/20200102_170033.jpg" data-lightbox="樓中樓家庭房"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>溫馨四人房</h3>
-                        <p>好友出遊的絕佳選擇，舒適的大床讓您一夜好眠。</p>
+                        <h3 class="serif">樓中樓家庭房</h3>
+                        <p>溫馨的樓中樓格局，為您的家庭旅遊增添美好回憶。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 二大床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> TWO BEDS</div>
+                            <div class="amenity-item"><i class="fas fa-users"></i> FAMILY</div>
                         </div>
                     </div>
                 </div>
                 <!-- Room 6 -->
-                <div class="room-card">
-                    <a href="../photo/樓中樓四人房/1.JPG" data-lightbox="room-loft-quad">
-                        <div class="room-img" style="background-image: url('../photo/樓中樓四人房/1.JPG')"></div>
+                <div class="room-card" data-aos="fade-up" data-aos-delay="200">
+                    <a href="../photo/親子家庭房(3人)粉/1.jpg" data-lightbox="親子家庭房(3人)粉">
+                        <div class="room-img" style="background-image: url('../photo/親子家庭房(3人)粉/1.jpg')"></div>
                     </a>
+                    <div style="display:none;">
+                        <a href="../photo/親子家庭房(3人)粉/20230714180000MPKWC.jpg" data-lightbox="親子家庭房(3人)粉"></a>
+                        <a href="../photo/親子家庭房(3人)粉/unnamed (1).jpg" data-lightbox="親子家庭房(3人)粉"></a>
+                        <a href="../photo/親子家庭房(3人)粉/unnamed.jpg" data-lightbox="親子家庭房(3人)粉"></a>
+                    </div>
                     <div class="room-info">
-                        <h3>樓中樓四人房</h3>
-                        <p>高挑的空間美學，兼具現代感與放鬆感的渡假空間。</p>
+                        <h3 class="serif">親子家庭房 (粉)</h3>
+                        <p>溫馨夢幻的粉色空間，專為小家庭設計的童趣客房。</p>
                         <div class="amenities">
-                            <div class="amenity-item"><i class="fas fa-bed"></i> 二大床</div>
-                            <div class="amenity-item"><i class="fas fa-shower"></i> 獨立衛浴</div>
+                            <div class="amenity-item"><i class="fas fa-bed"></i> 1 QUEEN + 1 SINGLE</div>
+                            <div class="amenity-item"><i class="fas fa-child"></i> KIDS FRIENDLY</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Room 7 -->
+                <div class="room-card" data-aos="fade-up">
+                    <a href="../photo/親子家庭房(3人)綠/1.jpg" data-lightbox="親子家庭房(3人)綠">
+                        <div class="room-img" style="background-image: url('../photo/親子家庭房(3人)綠/1.jpg')"></div>
+                    </a>
+                    <div style="display:none;">
+                        <a href="../photo/親子家庭房(3人)綠/2.jpg" data-lightbox="親子家庭房(3人)綠"></a>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="serif">親子家庭房 (綠)</h3>
+                        <p>清新自然的綠意氛圍，結合溜滑梯設施的親子樂園。</p>
+                        <div class="amenities">
+                            <div class="amenity-item"><i class="fas fa-bed"></i> 1 QUEEN + 1 SINGLE</div>
+                            <div class="amenity-item"><i class="fas fa-child"></i> KIDS FRIENDLY</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Global Amenities -->
-            <div class="global-amenities">
-                <h3><i class="fas fa-leaf" style="color: var(--primary);"></i> 莊園設施指南</h3>
+            <div class="global-amenities" data-aos="fade-up">
+                <h3 class="serif">設施指南</h3>
                 <div class="amenities-grid">
                     <div class="amenity-box"><i class="fas fa-parking"></i><span>專屬停車場</span></div>
                     <div class="amenity-box"><i class="fas fa-microphone"></i><span>專業KTV設備</span></div>
@@ -819,6 +1285,7 @@
                     <div class="amenity-box"><i class="fas fa-wind"></i><span>高功率吹風機</span></div>
                     <div class="amenity-box"><i class="fas fa-coffee"></i><span>精品咖啡機</span></div>
                     <div class="amenity-box"><i class="fas fa-paw"></i><span>寵物友善空間</span></div>
+                    <div class="amenity-box"><i class="fas fa-tshirt"></i><span>洗衣機</span></div>
                 </div>
             </div>
         </div>
@@ -826,17 +1293,19 @@
 
     <!-- Pricing Section -->
     <section id="pricing">
+        <div class="leaf-container" id="leafContainer"></div>
         <div class="container">
-            <div class="section-title">
-                <h2>包棟價目表</h2>
+            <div class="section-title" data-aos="fade-up">
+                <span>Rates</span>
+                <h2 class="serif">包棟價目表</h2>
                 <div class="divider"></div>
             </div>
             
-            <div class="pricing-table-container">
+            <div class="pricing-table-container" data-aos="fade-up">
                 <table class="pricing-table">
                     <thead>
                         <tr>
-                            <th>季節定義</th>
+                            <th>季節定義 / Season</th>
                             <th>平日 (週日至週五)</th>
                             <th>假日 (週六)</th>
                         </tr>
@@ -864,46 +1333,65 @@
 
     <!-- Rules Section -->
     <section id="rules" style="background-color: var(--dark); color: white;">
+        <div class="section-divider divider-top" style="transform: rotate(0deg); top: -1px;">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="fill: var(--light);">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120c64.31-27.12,143.23-28.53,207.19-22.15C253.3,101.9,292,112.55,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
         <div class="container">
-            <div class="section-title">
-                <h2 style="color: white;">旅宿守則</h2>
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="serif" style="color: white;">旅宿守則</h2>
                 <div class="divider"></div>
             </div>
             
             <div class="rules-wrapper">
-                <!-- 13條規定 -->
-                <div class="rules-card">
-                    <h3>住宿注意事項</h3>
+                <div class="rules-card" data-aos="fade-right">
+                    <h3 class="serif">住宿注意事項</h3>
                     <ul class="rules-list">
-                        <li>退房時間為隔日11:00前，延遲退房每半小時收NT$2000。</li>
+                        <li>退房時間為隔日11：00前，延遲退房每半小時NT$2000。</li>
                         <li>為維護兒童安全，請勿把小孩獨自留在民宿內。</li>
-                        <li>每房僅提供一位6歲以下兒童免費入住（不佔床）。</li>
-                        <li>加人NT$300, 加床NT$800（含床墊、枕頭、被子、浴巾及牙刷）。</li>
-                        <li>每房提供一把鑰匙，遺失需賠償NT$500。</li>
-                        <li>民宿外圍為草原，嚴禁放煙火。</li>
-                        <li>歡迎慶生活動，但請勿使用拉炮或噴條。</li>
-                        <li>配合政府法令，室內實施全面禁煙。</li>
-                        <li>嚴禁轟趴、嗑藥等違法行為，發現即報警。</li>
+                        <li>兒童不佔床規定：每房僅提供一位6歲以下兒童免費入住。</li>
+                        <li>加人費用NT$300，加床NT$800（含完整備品）。</li>
+                        <li>鑰匙請妥善保管，若遺失需賠償NT$500。</li>
+                        <li>民宿外圍都是草原，嚴禁放煙火。</li>
+                        <li>慶生活動請勿使用拉炮或噴條。</li>
+                        <li>室內實施全面禁煙。</li>
+                        <li>嚴禁轟叭、嗑藥等違法行為，一經發現報警處理。</li>
                         <li>帶寵物入住必須出發前事先告知。</li>
-                        <li>場地設施免費提供，請保持整潔。髒亂將收$3000起清潔費。</li>
-                        <li>入住收取NT$5000押金，退房無誤後全數退還。</li>
-                        <li>公共設備若遇突發故障不退費，損壞照價賠償。</li>
+                        <li>公設場地及廚房請保持整潔，餐具請自行清洗。</li>
+                        <li>入住需收取NT$5000押金，退房後全數退還。</li>
+                        <li>若有設備損壞需照價賠償。</li>
                     </ul>
                 </div>
 
-                <!-- 寵物規定 -->
-                <div class="rules-card" style="border-left-color: var(--primary);">
-                    <h3>毛小孩規定</h3>
-                    <ul class="rules-list">
-                        <li>入住請備妥寵物籃、牽繩，並準備寶貝習慣的床墊。</li>
-                        <li>寵物禁止上沙發與床鋪（這點非常重要，請把空間留給人類）。</li>
-                        <li>毛小孩禁止進入浴室洗澡或使用民宿毛巾擦拭。</li>
-                        <li>請勿讓寵物在室內隨地大小便，若發生請務必自行清理。</li>
-                        <li>為了其他住客權益，請勿讓毛小孩在室內大聲吠叫。</li>
-                        <li>若造成家具、床褥、地毯損壞或髒污，需依價賠償。</li>
-                        <li>請隨時注意毛小孩的安全，避免與其他住客或野生動物發生爭執。</li>
+                <div class="rules-card pet-friendly-card" data-aos="fade-left" id="petSection">
+                    <div id="pawContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
+                    <h3 class="serif">與毛孩一起旅行 🐾</h3>
+                    <ul class="rules-list pet-rules">
+                        <li>寵物入住收取一次性費用每隻500元。</li>
+                        <li>寵物請勿上床，不可共用房內毛浴巾。</li>
+                        <li>因衛生考慮，請主人自行準備毛孩食盤及寵物床。</li>
+                        <li>請勿將寵物單獨放置民宿內。</li>
+                        <li>請固定帶寵物到戶外上廁所。</li>
+                        <li>寵物活動範圍在一樓。</li>
+                        <li>寵物限定入住一樓雙人房或四人房。</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span>Guest Stories</span>
+                <h2 class="serif">顧客好評</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Reviews will be loaded by JS -->
             </div>
         </div>
     </section>
@@ -911,42 +1399,41 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>預約與諮詢</h2>
+            <div class="section-title" data-aos="fade-up">
+                <span>Get In Touch</span>
+                <h2 class="serif">聯絡我們</h2>
                 <div class="divider"></div>
             </div>
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-right">
                     <div class="info-item">
                         <i class="fas fa-map-marked-alt"></i>
                         <div>
-                            <h4>探訪位置</h4>
+                            <h4 class="serif">探訪位置</h4>
                             <p>台灣屏東縣恆春鎮龍泉路3巷10號</p>
+                            <a href="https://maps.app.goo.gl/iVGohsFXH6c8DhYM9" target="_blank" class="btn" style="margin-top: 25px; padding: 12px 30px; font-size: 0.8rem;">Google Maps</a>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>聯繫專線</h4>
+                            <h4 class="serif">聯繫專線</h4>
                             <p><a href="tel:0988576662" style="color: inherit; text-decoration: none;">0988-576-662</a></p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-line"></i>
                         <div>
-                            <h4>官方 LINE</h4>
+                            <h4 class="serif">官方 LINE</h4>
                             <p>ID: @dioinn</p>
                             <a href="https://lin.ee/ONZERGg" target="_blank" class="line-btn">
-                                <i class="fab fa-line"></i> 👉 一鍵加Line
+                                <i class="fab fa-line"></i> 一鍵加 LINE 預約
                             </a>
                         </div>
                     </div>
-                    <div style="margin-top: 20px;">
-                        <a href="https://maps.app.goo.gl/jyrcQS1zXrqnd6iy9" target="_blank" class="btn">開啟 Google Map 導航</a>
-                    </div>
                 </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.134591469037!2d120.72809187600813!3d22.016938353366714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346f6700037a3429%3A0xc3f958893d508e68!2z6ka45Zm05Y6y5p6X5peF5a6_IC0gVGhlIEp1bmdsZSBIb3VzZQ!5e0!3m2!1szh-TW!2stw!4v1711234567890!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-container" data-aos="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.046808794695!2d120.73759077600649!3d21.98771467615965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3471b18e321a002b%3A0x717bceed466f479e!2z6ka45Zm05Y6y5p6X5peF5a6_!5e0!3m2!1szh-TW!2stw!4v1740000000000!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -961,23 +1448,57 @@
 
     <footer>
         <div class="container">
-            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">The Jungle House</h3>
-            <p>&copy; 2026 迪噢叢林旅宿 版權所有. Designed for the wild at heart.</p>
+            <h3 class="serif">The Jungle House</h3>
+            <p>&copy; 2020 迪噢叢林旅宿. Designed for the wild at heart.</p>
         </div>
     </footer>
 
-    <!-- jQuery & Lightbox JS -->
+    <!-- JS Libraries -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
+        // Lightbox Options
+        lightbox.option({
+          'wrapAround': true
+        })
+
+        // AOS Animation
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 100) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const navbar = document.getElementById('navbar');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.position = 'fixed';
+                navLinks.style.top = '0';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.height = '100vh';
+                navLinks.style.backgroundColor = 'rgba(26, 47, 47, 0.98)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.justifyContent = 'center';
+                navLinks.style.alignItems = 'center';
+                navLinks.style.zIndex = '1000';
             }
         });
 
@@ -1005,27 +1526,182 @@
         });
 
         // Auto slide
-        let autoSlide = setInterval(() => {
+        setInterval(() => {
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             updateCarousel();
-        }, 5000);
+        }, 6000);
 
-        // Pause auto slide on hover
-        document.querySelector('.carousel-wrapper').addEventListener('mouseenter', () => clearInterval(autoSlide));
-        document.querySelector('.carousel-wrapper').addEventListener('mouseleave', () => {
-            autoSlide = setInterval(() => {
-                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                updateCarousel();
-            }, 5000);
-        });
+        function openPublicGallery(index) {
+            const publicLinks = document.querySelectorAll('a[data-lightbox="public"]');
+            if (publicLinks[index]) {
+                publicLinks[index].click();
+            }
+        }
 
-        // Lightbox Configuration
-        lightbox.option({
-          'resizeDuration': 200,
-          'wrapAround': true,
-          'albumLabel': "圖片 %1 / %2",
-          'fadeDuration': 300
-        });
+        // Reviews Dynamic Pool
+        const reviewsPool = [
+            { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
+            { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
+            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
+            { author: "David Wang", content: "在恆春能找到這麼安靜又高品質的包棟民宿不容易，星空真的很美，下次還會再來。", stars: 5 },
+            { author: "王小姐", content: "廚房設備齊全，我們在那裡做了一頓豐盛的晚餐。環境綠意盎然，拍照非常漂亮。", stars: 5 },
+            { author: "Kevin Liu", content: "地理位置優越，離南灣很近。公共空間很大，一群朋友聚在一起玩電動、唱歌非常盡興。", stars: 5 }
+        ];
+
+        function displayReviews() {
+            const reviewsGrid = document.getElementById('reviewsGrid');
+            reviewsPool.slice(0, 3).forEach((review, index) => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', index * 100);
+                card.innerHTML = `
+                    <div class="stars">${'★'.repeat(review.stars)}</div>
+                    <div class="review-content">"${review.content}"</div>
+                    <div class="review-author">${review.author}</div>
+                `;
+                reviewsGrid.appendChild(card);
+            });
+        }
+
+        displayReviews();
+
+        // Falling Leaves Effect
+        const leafContainer = document.getElementById('leafContainer');
+        const leafIcons = ['fa-leaf', 'fa-seedling'];
+        let leafInterval;
+
+        function createLeaf() {
+            const leaf = document.createElement('i');
+            const icon = leafIcons[Math.floor(Math.random() * leafIcons.length)];
+            leaf.className = `fas ${icon} falling-leaf`;
+            
+            const startX = Math.random() * window.innerWidth;
+            const duration = 5 + Math.random() * 5;
+            const size = 1 + Math.random() * 1.5;
+            
+            leaf.style.left = `${startX}px`;
+            leaf.style.animationDuration = `${duration}s`;
+            leaf.style.fontSize = `${size}rem`;
+            
+            leafContainer.appendChild(leaf);
+            
+            setTimeout(() => {
+                leaf.remove();
+            }, duration * 1000);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!leafInterval) {
+                        leafInterval = setInterval(createLeaf, 800);
+                    }
+                } else {
+                    if (leafInterval) {
+                        clearInterval(leafInterval);
+                        leafInterval = null;
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(document.getElementById('pricing'));
+
+        // Paw Print Animation Logic
+        const petSection = document.getElementById('petSection');
+        const pawContainer = document.getElementById('pawContainer');
+
+        function createPawPrint(x, y, angle) {
+            const paw = document.createElement('i');
+            paw.className = 'fas fa-paw paw-print';
+            paw.style.left = `${x}px`;
+            paw.style.top = `${y}px`;
+            paw.style.transform = `rotate(${angle}deg)`;
+            pawContainer.appendChild(paw);
+            
+            setTimeout(() => {
+                paw.remove();
+            }, 3000); // 維持 3 秒後移除
+        }
+
+        function startPawPatrol() {
+            const rect = petSection.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+
+            // 隨機定義起始位置和結束位置，讓路徑隨機化
+            const startSides = ['top', 'bottom', 'left', 'right'];
+            const startSide = startSides[Math.floor(Math.random() * startSides.length)];
+            
+            let startX, startY, endX, endY;
+
+            if (startSide === 'top') {
+                startX = Math.random() * width;
+                startY = -20;
+                endX = Math.random() * width;
+                endY = height + 20;
+            } else if (startSide === 'bottom') {
+                startX = Math.random() * width;
+                startY = height + 20;
+                endX = Math.random() * width;
+                endY = -20;
+            } else if (startSide === 'left') {
+                startX = -20;
+                startY = Math.random() * height;
+                endX = width + 20;
+                endY = Math.random() * height;
+            } else {
+                startX = width + 20;
+                startY = Math.random() * height;
+                endX = -20;
+                endY = Math.random() * height;
+            }
+
+            // 計算步進向量
+            const totalSteps = 12 + Math.floor(Math.random() * 8); // 12-20 步
+            const stepX = (endX - startX) / totalSteps;
+            const stepY = (endY - startY) / totalSteps;
+            const baseAngle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
+
+            let currentStep = 0;
+            const patrolInterval = setInterval(() => {
+                // 保持左右步進節奏
+                const isRightFoot = currentStep % 2 === 0;
+                const offsetDistance = 25; // 左右腳交替的間距
+                
+                // 計算法線方向的偏移 (左右交替)
+                const normalAngle = (baseAngle - 90) * (Math.PI / 180);
+                const offsetX = Math.cos(normalAngle + Math.PI / 2) * (isRightFoot ? offsetDistance : -offsetDistance);
+                const offsetY = Math.sin(normalAngle + Math.PI / 2) * (isRightFoot ? offsetDistance : -offsetDistance);
+
+                const currentX = startX + stepX * currentStep + offsetX;
+                const currentY = startY + stepY * currentStep + offsetY;
+
+                createPawPrint(currentX, currentY, baseAngle);
+
+                currentStep++;
+                if (currentStep >= totalSteps) {
+                    clearInterval(patrolInterval);
+                }
+            }, 400); // 步進式的節奏
+        }
+
+        // Trigger paw patrol every 8 seconds if visible
+        const petObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startPawPatrol();
+                    this.pawPatrolTimer = setInterval(startPawPatrol, 8000);
+                } else {
+                    if (this.pawPatrolTimer) {
+                        clearInterval(this.pawPatrolTimer);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        petObserver.observe(petSection);
     </script>
 </body>
 </html>
