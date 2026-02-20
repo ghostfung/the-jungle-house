@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <!-- Fancybox 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -22,6 +22,15 @@
             --shadow: 0 20px 40px rgba(0,0,0,0.05);
             --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
             --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Fancybox Customization */
+        body .fancybox__backdrop {
+            background: rgba(0, 109, 91, 0.95); /* 半透明深綠色 #006D5B */
+        }
+        
+        body .fancybox__caption {
+            font-family: 'Noto Sans TC', sans-serif;
         }
 
         * {
@@ -418,6 +427,7 @@
             background-position: center;
             cursor: pointer;
             position: relative;
+            display: block; /* 確保 a tag 表現為區塊 */
         }
         
         .slide::after {
@@ -482,6 +492,7 @@
             background-position: center;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .room-img::before {
@@ -1148,32 +1159,29 @@
                 </div>
                 <div class="carousel-wrapper">
                     <div class="carousel-track" id="carouselTrack">
-                        <div class="slide" style="background-image: url('photo/public/1.jpg')" onclick="openPublicGallery(0)"></div>
-                        <div class="slide" style="background-image: url('photo/public/13f9dfb0-51cb-4609-a8a6-91eb6b8c49f5.jpg')" onclick="openPublicGallery(1)"></div>
-                        <div class="slide" style="background-image: url('photo/public/61a30a02-9f6e-4b15-8ebc-f95c90b50795.jpg')" onclick="openPublicGallery(2)"></div>
-                        <div class="slide" style="background-image: url('photo/public/946ccc8f-9fe0-489c-ac01-7316012406f2.jpg')" onclick="openPublicGallery(3)"></div>
-                        <div class="slide" style="background-image: url('photo/public/97614d0c-b07f-4ce9-be2e-ba31bf209a2b.jpg')" onclick="openPublicGallery(4)"></div>
-                        <div class="slide" style="background-image: url('photo/public/b36b316b-d146-4fc4-81de-00e0678654f0.jpg')" onclick="openPublicGallery(5)"></div>
-                        <div class="slide" style="background-image: url('photo/public/b9da8ff2-7548-445c-b0e4-b6302bcd5a93.jpg')" onclick="openPublicGallery(6)"></div>
-                        <div class="slide" style="background-image: url('photo/public/bd1f216e-ad6f-4960-a3d3-020e3066d203.jpg')" onclick="openPublicGallery(7)"></div>
-                        <div class="slide" style="background-image: url('photo/public/ea16cd1f-9208-4c35-bf03-796b2d5ef723.jpg')" onclick="openPublicGallery(8)"></div>
-                        <div class="slide" style="background-image: url('photo/public/ed87c697-3e0b-4e85-8248-7d2dbde39de2.jpg')" onclick="openPublicGallery(9)"></div>
+                        <!-- Slide 1 -->
+                        <a href="photo/public/1.jpg" data-fancybox="public" data-caption="公共空間 1" class="slide" style="background-image: url('photo/public/1.jpg')"></a>
+                        <!-- Slide 2 -->
+                        <a href="photo/public/13f9dfb0-51cb-4609-a8a6-91eb6b8c49f5.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/13f9dfb0-51cb-4609-a8a6-91eb6b8c49f5.jpg')"></a>
+                        <!-- Slide 3 -->
+                        <a href="photo/public/61a30a02-9f6e-4b15-8ebc-f95c90b50795.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/61a30a02-9f6e-4b15-8ebc-f95c90b50795.jpg')"></a>
+                        <!-- Slide 4 -->
+                        <a href="photo/public/946ccc8f-9fe0-489c-ac01-7316012406f2.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/946ccc8f-9fe0-489c-ac01-7316012406f2.jpg')"></a>
+                        <!-- Slide 5 -->
+                        <a href="photo/public/97614d0c-b07f-4ce9-be2e-ba31bf209a2b.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/97614d0c-b07f-4ce9-be2e-ba31bf209a2b.jpg')"></a>
+                        <!-- Slide 6 -->
+                        <a href="photo/public/b36b316b-d146-4fc4-81de-00e0678654f0.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/b36b316b-d146-4fc4-81de-00e0678654f0.jpg')"></a>
+                        <!-- Slide 7 -->
+                        <a href="photo/public/b9da8ff2-7548-445c-b0e4-b6302bcd5a93.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/b9da8ff2-7548-445c-b0e4-b6302bcd5a93.jpg')"></a>
+                        <!-- Slide 8 -->
+                        <a href="photo/public/bd1f216e-ad6f-4960-a3d3-020e3066d203.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/bd1f216e-ad6f-4960-a3d3-020e3066d203.jpg')"></a>
+                        <!-- Slide 9 -->
+                        <a href="photo/public/ea16cd1f-9208-4c35-bf03-796b2d5ef723.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/ea16cd1f-9208-4c35-bf03-796b2d5ef723.jpg')"></a>
+                        <!-- Slide 10 -->
+                        <a href="photo/public/ed87c697-3e0b-4e85-8248-7d2dbde39de2.jpg" data-fancybox="public" class="slide" style="background-image: url('photo/public/ed87c697-3e0b-4e85-8248-7d2dbde39de2.jpg')"></a>
                     </div>
                     <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                     <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <!-- Hidden Lightbox Links for Public Space -->
-                <div style="display:none;">
-                    <a href="photo/public/1.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/13f9dfb0-51cb-4609-a8a6-91eb6b8c49f5.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/61a30a02-9f6e-4b15-8ebc-f95c90b50795.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/946ccc8f-9fe0-489c-ac01-7316012406f2.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/97614d0c-b07f-4ce9-be2e-ba31bf209a2b.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/b36b316b-d146-4fc4-81de-00e0678654f0.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/b9da8ff2-7548-445c-b0e4-b6302bcd5a93.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/bd1f216e-ad6f-4960-a3d3-020e3066d203.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/ea16cd1f-9208-4c35-bf03-796b2d5ef723.jpg" data-lightbox="public"></a>
-                    <a href="photo/public/ed87c697-3e0b-4e85-8248-7d2dbde39de2.jpg" data-lightbox="public"></a>
                 </div>
             </div>
         </div>
@@ -1191,12 +1199,12 @@
             <div class="room-grid">
                 <!-- Room 1 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/double/1.jpg" data-lightbox="double">
+                    <a href="photo/double/1.jpg" data-fancybox="double">
                         <div class="room-img" style="background-image: url('photo/double/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/double/img_3655.jpg" data-lightbox="double"></a>
-                        <a href="photo/double/img_3656.jpg" data-lightbox="double"></a>
+                        <a href="photo/double/img_3655.jpg" data-fancybox="double"></a>
+                        <a href="photo/double/img_3656.jpg" data-fancybox="double"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">雙人房</h3>
@@ -1209,12 +1217,12 @@
                 </div>
                 <!-- Room 2 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
-                    <a href="photo/quad/1.jpg" data-lightbox="quad">
+                    <a href="photo/quad/1.jpg" data-fancybox="quad">
                         <div class="room-img" style="background-image: url('photo/quad/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/quad/bc_9870-hdr.jpg" data-lightbox="quad"></a>
-                        <a href="photo/quad/bc_9875-hdr.jpg" data-lightbox="quad"></a>
+                        <a href="photo/quad/bc_9870-hdr.jpg" data-fancybox="quad"></a>
+                        <a href="photo/quad/bc_9875-hdr.jpg" data-fancybox="quad"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">四人房</h3>
@@ -1227,14 +1235,14 @@
                 </div>
                 <!-- Room 3 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
-                    <a href="photo/loft-6/1.jpg" data-lightbox="loft-6">
+                    <a href="photo/loft-6/1.jpg" data-fancybox="loft-6">
                         <div class="room-img" style="background-image: url('photo/loft-6/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-6/bc_9902-hdr.jpg" data-lightbox="loft-6"></a>
-                        <a href="photo/loft-6/bc_9905.jpg" data-lightbox="loft-6"></a>
-                        <a href="photo/loft-6/img_3671.jpg" data-lightbox="loft-6"></a>
-                        <a href="photo/loft-6/img_3672.jpg" data-lightbox="loft-6"></a>
+                        <a href="photo/loft-6/bc_9902-hdr.jpg" data-fancybox="loft-6"></a>
+                        <a href="photo/loft-6/bc_9905.jpg" data-fancybox="loft-6"></a>
+                        <a href="photo/loft-6/img_3671.jpg" data-fancybox="loft-6"></a>
+                        <a href="photo/loft-6/img_3672.jpg" data-fancybox="loft-6"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓六人房</h3>
@@ -1247,13 +1255,13 @@
                 </div>
                 <!-- Room 4 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/loft-4/1.jpg" data-lightbox="loft-4">
+                    <a href="photo/loft-4/1.jpg" data-fancybox="loft-4">
                         <div class="room-img" style="background-image: url('photo/loft-4/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-4/bc_9829.jpg" data-lightbox="loft-4"></a>
-                        <a href="photo/loft-4/img_3666.jpg" data-lightbox="loft-4"></a>
-                        <a href="photo/loft-4/img_3669.jpg" data-lightbox="loft-4"></a>
+                        <a href="photo/loft-4/bc_9829.jpg" data-fancybox="loft-4"></a>
+                        <a href="photo/loft-4/img_3666.jpg" data-fancybox="loft-4"></a>
+                        <a href="photo/loft-4/img_3669.jpg" data-fancybox="loft-4"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓四人房</h3>
@@ -1266,11 +1274,11 @@
                 </div>
                 <!-- Room 5 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
-                    <a href="photo/loft-family/1.jpg" data-lightbox="loft-family">
+                    <a href="photo/loft-family/1.jpg" data-fancybox="loft-family">
                         <div class="room-img" style="background-image: url('photo/loft-family/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-family/20200102_170033.jpg" data-lightbox="loft-family"></a>
+                        <a href="photo/loft-family/20200102_170033.jpg" data-fancybox="loft-family"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓家庭房</h3>
@@ -1283,13 +1291,13 @@
                 </div>
                 <!-- Room 6 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
-                    <a href="photo/kids-pink/1.jpg" data-lightbox="kids-pink">
+                    <a href="photo/kids-pink/1.jpg" data-fancybox="kids-pink">
                         <div class="room-img" style="background-image: url('photo/kids-pink/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/kids-pink/20230714180000mpkwc.jpg" data-lightbox="kids-pink"></a>
-                        <a href="photo/kids-pink/unnamed__1_.jpg" data-lightbox="kids-pink"></a>
-                        <a href="photo/kids-pink/unnamed.jpg" data-lightbox="kids-pink"></a>
+                        <a href="photo/kids-pink/20230714180000mpkwc.jpg" data-fancybox="kids-pink"></a>
+                        <a href="photo/kids-pink/unnamed__1_.jpg" data-fancybox="kids-pink"></a>
+                        <a href="photo/kids-pink/unnamed.jpg" data-fancybox="kids-pink"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">親子家庭房 (粉)</h3>
@@ -1302,13 +1310,13 @@
                 </div>
                 <!-- Room 7 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/kids-green/1.jpg" data-lightbox="kids-green">
+                    <a href="photo/kids-green/1.jpg" data-fancybox="kids-green">
                         <div class="room-img" style="background-image: url('photo/kids-green/1.jpg')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/kids-green/5c2abf67-9b82-486c-afb0-a91910226c23.jpg" data-lightbox="kids-green"></a>
-                        <a href="photo/kids-green/6a30eefe-f091-4c5a-a8c8-d2028347cbc0.jpg" data-lightbox="kids-green"></a>
-                        <a href="photo/kids-green/ee87f50a-9dca-431d-b892-3c312d8c32bc.jpg" data-lightbox="kids-green"></a>
+                        <a href="photo/kids-green/5c2abf67-9b82-486c-afb0-a91910226c23.jpg" data-fancybox="kids-green"></a>
+                        <a href="photo/kids-green/6a30eefe-f091-4c5a-a8c8-d2028347cbc0.jpg" data-fancybox="kids-green"></a>
+                        <a href="photo/kids-green/ee87f50a-9dca-431d-b892-3c312d8c32bc.jpg" data-fancybox="kids-green"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">親子家庭房 (綠)</h3>
@@ -1374,7 +1382,7 @@
                         </tr>
                         <tr>
                             <td><strong>連續假期 / 春節</strong></td>
-                            <td colspan="2" class="highlight-price">NT$ 35,800</td>
+                            <td colspan="2" class="highlight-price">NT$ 32,800</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1400,19 +1408,19 @@
                 <div class="rules-card" data-aos="fade-right">
                     <h3 class="serif">住宿注意事項</h3>
                     <ul class="rules-list">
-                        <li>退房時間為隔日11：00前，延遲退房每半小時NT$2000。</li>
-                        <li>為維護兒童安全，請勿把小孩獨自留在民宿內。</li>
+                        <li>我們退房時間為隔日11：00前，如需延遲退房每半小時酌收NT$2000。</li>
+                        <li>為維護兒童安全，請勿把小孩獨自留在民宿內及請照顧小孩於住宿期間內的安全，本民宿一概不負責。</li>
                         <li>兒童不佔床規定：每房僅提供一位6歲以下兒童免費入住。</li>
-                        <li>加人費用NT$300，加床NT$800（含完整備品）。</li>
-                        <li>鑰匙請妥善保管，若遺失需賠償NT$500。</li>
+                        <li>如超出房型入住規定人數，加人費用NT$300, 加床NT$800（額外提供床墊、枕頭、被子、浴巾和牙刷）。</li>
+                        <li>每間房間只提供一把鑰匙，請妥善保管，若不慎遺失需賠償NT$500。</li>
                         <li>民宿外圍都是草原，嚴禁放煙火。</li>
-                        <li>慶生活動請勿使用拉炮或噴條。</li>
-                        <li>室內實施全面禁煙。</li>
+                        <li>歡迎大家來舉辦慶生等活動，但請勿使用拉炮或噴條。</li>
+                        <li>本民宿配合政府法令，室內實施全面禁煙。</li>
                         <li>嚴禁轟叭、嗑藥等違法行為，一經發現報警處理。</li>
-                        <li>帶寵物入住必須出發前事先告知。</li>
-                        <li>公設場地及廚房請保持整潔，餐具請自行清洗。</li>
-                        <li>入住需收取NT$5000押金，退房後全數退還。</li>
-                        <li>若有設備損壞需照價賠償。</li>
+                        <li>如要帶寵物一同入住，必須出發前事先告知。</li>
+                        <li>民宿場地及設施都是免費提供使用的，我們都沒有額外收清潔費，請麻煩你們把垃圾收好集中，公設場地及廚房請保持整潔，使用過的餐具及杯子請自行清洗乾淨恢復原狀，如果環境太過髒亂我們會收$3000起的清潔費。</li>
+                        <li>入住需要收取NT$5000押金，退房後沒有問題全數退還。</li>
+                        <li>民宿內設備於住宿期間提供房客免費使用，所有公共設備不包含在房價內，若遇突發狀況設備故障不能使用，請立即反映處理！若還是無法恢復正常使用,本民宿不會退費若有損壞照價賠償。</li>
                     </ul>
                 </div>
 
@@ -1506,14 +1514,18 @@
 
     <!-- JS Libraries -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Fancybox 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Lightbox Options
-        lightbox.option({
-          'wrapAround': true
-        })
+        // Init Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+            Thumbs: {
+                type: "modern"
+            }
+        });
 
         // AOS Animation
         AOS.init({
@@ -1538,13 +1550,11 @@
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // 切換漢堡圖示動畫 (可選)
             menuToggle.classList.toggle('is-active');
         });
 
-        // 點擊連結後自動收合選單
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
+        // Auto close mobile menu
+        document.querySelectorAll('.nav-links a').forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
@@ -1573,90 +1583,61 @@
             updateCarousel();
         });
 
-        // Auto slide
         setInterval(() => {
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             updateCarousel();
         }, 6000);
 
-        function openPublicGallery(index) {
-            const publicLinks = document.querySelectorAll('a[data-lightbox="public"]');
-            if (publicLinks[index]) {
-                publicLinks[index].click();
-            }
-        }
-
-        // Reviews Dynamic Pool
+        // Reviews
         const reviewsPool = [
             { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
             { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
-            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
-            { author: "David Wang", content: "在恆春能找到這麼安靜又高品質的包棟民宿不容易，星空真的很美，下次還會再來。", stars: 5 },
-            { author: "王小姐", content: "廚房設備齊全，我們在那裡做了一頓豐盛的晚餐。環境綠意盎然，拍照非常漂亮。", stars: 5 },
-            { author: "Kevin Liu", content: "地理位置優越，離南灣很近。公共空間很大，一群朋友聚在一起玩電動、唱歌非常盡興。", stars: 5 }
+            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 }
         ];
 
-        function displayReviews() {
-            const reviewsGrid = document.getElementById('reviewsGrid');
-            reviewsPool.slice(0, 3).forEach((review, index) => {
-                const card = document.createElement('div');
-                card.className = 'review-card';
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', index * 100);
-                card.innerHTML = `
-                    <div class="stars">${'★'.repeat(review.stars)}</div>
-                    <div class="review-content">"${review.content}"</div>
-                    <div class="review-author">${review.author}</div>
-                `;
-                reviewsGrid.appendChild(card);
-            });
-        }
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        reviewsPool.forEach((review, index) => {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', index * 100);
+            card.innerHTML = `
+                <div class="stars">${'★'.repeat(review.stars)}</div>
+                <div class="review-content">"${review.content}"</div>
+                <div class="review-author">${review.author}</div>
+            `;
+            reviewsGrid.appendChild(card);
+        });
 
-        displayReviews();
-
-        // Falling Leaves Effect
+        // Falling Leaves
         const leafContainer = document.getElementById('leafContainer');
         const leafIcons = ['fa-leaf', 'fa-seedling'];
         let leafInterval;
 
         function createLeaf() {
             const leaf = document.createElement('i');
-            const icon = leafIcons[Math.floor(Math.random() * leafIcons.length)];
-            leaf.className = `fas ${icon} falling-leaf`;
-            
-            const startX = Math.random() * window.innerWidth;
+            leaf.className = `fas ${leafIcons[Math.floor(Math.random() * 2)]} falling-leaf`;
             const duration = 5 + Math.random() * 5;
-            const size = 1 + Math.random() * 1.5;
-            
-            leaf.style.left = `${startX}px`;
+            leaf.style.left = `${Math.random() * window.innerWidth}px`;
             leaf.style.animationDuration = `${duration}s`;
-            leaf.style.fontSize = `${size}rem`;
-            
+            leaf.style.fontSize = `${1 + Math.random() * 1.5}rem`;
             leafContainer.appendChild(leaf);
-            
-            setTimeout(() => {
-                leaf.remove();
-            }, duration * 1000);
+            setTimeout(() => leaf.remove(), duration * 1000);
         }
 
-        const observer = new IntersectionObserver((entries) => {
+        const leafObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (!leafInterval) {
-                        leafInterval = setInterval(createLeaf, 800);
-                    }
+                    if (!leafInterval) leafInterval = setInterval(createLeaf, 800);
                 } else {
-                    if (leafInterval) {
-                        clearInterval(leafInterval);
-                        leafInterval = null;
-                    }
+                    clearInterval(leafInterval);
+                    leafInterval = null;
                 }
             });
         }, { threshold: 0.1 });
+        leafObserver.observe(document.getElementById('pricing'));
 
-        observer.observe(document.getElementById('pricing'));
-
-        // Paw Print Animation Logic
+        // Paw Prints
         const petSection = document.getElementById('petSection');
         const pawContainer = document.getElementById('pawContainer');
 
@@ -1667,88 +1648,39 @@
             paw.style.top = `${y}px`;
             paw.style.transform = `rotate(${angle}deg)`;
             pawContainer.appendChild(paw);
-            
-            setTimeout(() => {
-                paw.remove();
-            }, 3000); // 維持 3 秒後移除
+            setTimeout(() => paw.remove(), 3000);
         }
 
         function startPawPatrol() {
             const rect = petSection.getBoundingClientRect();
             const width = rect.width;
             const height = rect.height;
+            const startX = -20, startY = Math.random() * height, endX = width + 20, endY = Math.random() * height;
+            const steps = 15;
+            const stepX = (endX - startX) / steps, stepY = (endY - startY) / steps;
+            const angle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
 
-            // 隨機定義起始位置和結束位置，讓路徑隨機化
-            const startSides = ['top', 'bottom', 'left', 'right'];
-            const startSide = startSides[Math.floor(Math.random() * startSides.length)];
-            
-            let startX, startY, endX, endY;
-
-            if (startSide === 'top') {
-                startX = Math.random() * width;
-                startY = -20;
-                endX = Math.random() * width;
-                endY = height + 20;
-            } else if (startSide === 'bottom') {
-                startX = Math.random() * width;
-                startY = height + 20;
-                endX = Math.random() * width;
-                endY = -20;
-            } else if (startSide === 'left') {
-                startX = -20;
-                startY = Math.random() * height;
-                endX = width + 20;
-                endY = Math.random() * height;
-            } else {
-                startX = width + 20;
-                startY = Math.random() * height;
-                endX = -20;
-                endY = Math.random() * height;
-            }
-
-            // 計算步進向量
-            const totalSteps = 12 + Math.floor(Math.random() * 8); // 12-20 步
-            const stepX = (endX - startX) / totalSteps;
-            const stepY = (endY - startY) / totalSteps;
-            const baseAngle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
-
-            let currentStep = 0;
-            const patrolInterval = setInterval(() => {
-                // 保持左右步進節奏
-                const isRightFoot = currentStep % 2 === 0;
-                const offsetDistance = 25; // 左右腳交替的間距
-                
-                // 計算法線方向的偏移 (左右交替)
-                const normalAngle = (baseAngle - 90) * (Math.PI / 180);
-                const offsetX = Math.cos(normalAngle + Math.PI / 2) * (isRightFoot ? offsetDistance : -offsetDistance);
-                const offsetY = Math.sin(normalAngle + Math.PI / 2) * (isRightFoot ? offsetDistance : -offsetDistance);
-
-                const currentX = startX + stepX * currentStep + offsetX;
-                const currentY = startY + stepY * currentStep + offsetY;
-
-                createPawPrint(currentX, currentY, baseAngle);
-
-                currentStep++;
-                if (currentStep >= totalSteps) {
-                    clearInterval(patrolInterval);
-                }
-            }, 400); // 步進式的節奏
+            let step = 0;
+            const interval = setInterval(() => {
+                const offset = (step % 2 === 0 ? 25 : -25);
+                const nx = Math.cos((angle - 180) * Math.PI / 180) * offset;
+                const ny = Math.sin((angle - 180) * Math.PI / 180) * offset;
+                createPawPrint(startX + stepX * step + nx, startY + stepY * step + ny, angle);
+                step++;
+                if (step >= steps) clearInterval(interval);
+            }, 400);
         }
 
-        // Trigger paw patrol every 8 seconds if visible
         const petObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     startPawPatrol();
-                    this.pawPatrolTimer = setInterval(startPawPatrol, 8000);
+                    this.pawTimer = setInterval(startPawPatrol, 8000);
                 } else {
-                    if (this.pawPatrolTimer) {
-                        clearInterval(this.pawPatrolTimer);
-                    }
+                    clearInterval(this.pawTimer);
                 }
             });
         }, { threshold: 0.1 });
-
         petObserver.observe(petSection);
     </script>
 </body>
