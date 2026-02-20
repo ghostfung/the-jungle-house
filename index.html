@@ -4,6 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>迪噢叢林旅宿 | The Jungle House - 恆春墾丁包棟民宿</title>
+    <meta name="description" content="恆春墾丁包棟民宿首選，The Jungle House 迪噢叢林旅宿。提供KTV、烤肉設備、麻將、寵物友善住宿。適合家族旅遊、員工旅遊、好友聚會。鄰近南灣，享受隱密與便利兼具的度假體驗。">
+    <meta name="keywords" content="墾丁包棟, 恆春包棟, 寵物友善民宿, 墾丁KTV民宿, 墾丁烤肉民宿, 家族旅遊, 員工旅遊, The Jungle House">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BedAndBreakfast",
+      "name": "迪噢叢林旅宿 | The Jungle House",
+      "image": [
+        "photo/public/1.jpg",
+        "photo/house.png"
+      ],
+      "description": "位於恆春墾丁的獨棟Villa民宿，專營包棟服務。提供專業KTV影音設備、戶外烤肉區、電動麻將桌及寬敞開放式廚房。我們是寵物友善旅宿，擁有廣大戶外空間讓毛孩奔跑。非常適合家族旅遊、公司員工旅遊或大群朋友聚會。位置鄰近恆春市區與南灣海灘，交通便利且保有隱私。",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "龍泉路3巷10號",
+        "addressLocality": "恆春鎮",
+        "addressRegion": "屏東縣",
+        "postalCode": "946",
+        "addressCountry": "TW"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 21.987714,
+        "longitude": 120.737590
+      },
+      "telephone": "+886-988-576-662",
+      "priceRange": "NT$20,800 - NT$32,800",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "包棟服務 (Private Villa)",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "KTV",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "烤肉設備 (BBQ Facilities)",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "寵物友善 (Pet Friendly)",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "電動麻將桌",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "停車場",
+          "value": "True"
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -65,7 +133,7 @@
             z-index: 2;
         }
 
-        /* 植物裝飾元素 */
+        /* 植物裝飾元素 (現有) */
         .leaf-decoration {
             position: absolute;
             z-index: 1;
@@ -952,6 +1020,22 @@
             font-weight: 300;
         }
 
+        /* Pulse Animation for Line Button */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 185, 0, 0.4);
+                transform: scale(1);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(0, 185, 0, 0);
+                transform: scale(1.03);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 185, 0, 0);
+                transform: scale(1);
+            }
+        }
+
         .line-btn {
             display: inline-flex;
             align-items: center;
@@ -966,11 +1050,15 @@
             transition: var(--transition);
             font-size: 0.9rem;
             letter-spacing: 1px;
+            /* Add animation */
+            animation: pulse-glow 2.5s infinite ease-in-out;
         }
 
         .line-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,185,0,0.2);
+            /* Pause animation on hover */
+            animation: none;
         }
 
         .map-container {
@@ -978,6 +1066,11 @@
             min-height: 550px;
             box-shadow: var(--shadow-hover);
             filter: grayscale(20%) contrast(1.1);
+        }
+        
+        .map-container iframe {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 109, 91, 0.15); /* 淡淡的深綠色陰影 */
         }
 
         /* --- FAB & Footer --- */
@@ -1061,7 +1154,7 @@
             .highlight-price { font-size: 1.3rem; }
             .fab-container { bottom: 30px; right: 30px; }
             .fab { width: 55px; height: 55px; font-size: 1.3rem; }
-
+            
             /* 設施指南網格化優化 */
             .amenities-grid {
                 grid-template-columns: repeat(3, 1fr);
