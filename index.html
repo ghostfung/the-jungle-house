@@ -470,6 +470,27 @@
             z-index: -1;
         }
 
+        /* --- Video Section --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* --- Carousel --- */
         .carousel-container {
             margin-top: 150px;
@@ -740,6 +761,49 @@
             font-family: 'Playfair Display', serif;
         }
 
+        /* --- FAQ --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* --- Rules Section --- */
         .rules-wrapper {
             display: grid;
@@ -924,51 +988,105 @@
         }
 
         /* --- Reviews Section --- */
+        #reviews {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        .google-rating-summary {
+            text-align: center;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rating-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .rating-score {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .rating-stars {
+            color: #FFD700; /* Gold */
+            font-size: 1.2rem;
+        }
+
+        .reviews-scroll-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0 60px 0;
+            cursor: grab;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .reviews-scroll-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
         .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            display: flex;
+            gap: 30px;
+            padding: 0 30px;
+            width: max-content;
         }
 
         .review-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.08);
+            width: 400px;
             padding: 50px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
             gap: 25px;
             position: relative;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
         
-        .review-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px; right: 40px;
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            color: rgba(212, 163, 115, 0.1);
+        .review-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
         }
 
-        .stars {
-            color: var(--accent);
-            font-size: 1rem;
-            letter-spacing: 3px;
+        .review-card::before {
+            content: '\f10d'; /* quote-left */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 30px; right: 40px;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.1);
         }
 
         .review-content {
-            font-size: 1.05rem;
-            color: #444;
+            font-size: 1.1rem;
+            color: var(--white);
             font-style: italic;
             font-weight: 300;
             line-height: 1.8;
+            flex-grow: 1;
         }
 
         .review-author {
             font-weight: 600;
-            color: var(--primary);
-            font-size: 0.9rem;
+            color: var(--accent);
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: flex;
@@ -980,7 +1098,8 @@
             content: '';
             width: 30px;
             height: 1px;
-            background: var(--accent);
+            background: var(--white);
+            opacity: 0.3;
         }
 
         /* --- Contact --- */
@@ -1144,6 +1263,8 @@
             
             .hero-title { font-size: 3rem; letter-spacing: 5px; }
             section { padding: 100px 0; }
+            
+            .review-card { width: 320px; padding: 30px; }
         }
 
         @media (max-width: 768px) {
@@ -1199,7 +1320,7 @@
             <li><a href="#shared-space">公共空間</a></li>
             <li><a href="#rooms">房型展示</a></li>
             <li><a href="#pricing">包棟房價</a></li>
-            <li><a href="#rules">入住須知</a></li>
+            <li><a href="#faq">常見問題</a></li>
             <li><a href="#contact">聯絡我們</a></li>
         </ul>
     </nav>
@@ -1207,6 +1328,7 @@
     <!-- Hero Banner -->
     <section id="home" class="hero">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1500" style="margin-top: 200px;">
+            <h1 class="hero-title serif">The Jungle House</h1>
             <a href="#rooms" class="btn">Discover More</a>
         </div>
     </section>
@@ -1240,6 +1362,17 @@
                 <div class="magazine-img-wrapper" data-aos="fade-left">
                     <div class="magazine-img-deco"></div>
                     <img src="photo/house.png" alt="House" class="magazine-img">
+                </div>
+            </div>
+
+            <!-- Video Player Block -->
+            <div class="video-block" style="margin-top: 150px;" data-aos="fade-up">
+                <div class="section-title">
+                    <h3 class="serif" style="font-size: 2.2rem; color: var(--primary);">走進迪噢叢林：民宿實景直擊</h3>
+                    <div class="divider"></div>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/0O0CjaxXg9Y" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -1438,6 +1571,10 @@
                     <div class="amenity-box"><i class="fas fa-coffee"></i><span>精品咖啡機</span></div>
                     <div class="amenity-box"><i class="fas fa-paw"></i><span>寵物友善空間</span></div>
                     <div class="amenity-box"><i class="fas fa-tshirt"></i><span>洗衣機</span></div>
+                    <div class="amenity-box"><i class="fas fa-bath"></i><span>嬰兒澡盆</span></div>
+                    <div class="amenity-box"><i class="fas fa-baby"></i><span>消毒鍋</span></div>
+                    <div class="amenity-box"><i class="fas fa-child"></i><span>兒童滑梯</span></div>
+                    <div class="amenity-box"><i class="fas fa-cloud-sun"></i><span>觀景陽台</span></div>
                 </div>
             </div>
         </div>
@@ -1483,6 +1620,48 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span>Q & A</span>
+                <h2 class="serif">常見問題</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-up">
+                    <h4>Q1：包棟大約可以容納幾多人？適合員工或家族旅遊嗎？</h4>
+                    <p>A：非常適合！我們可容納26人擁有多種房型（包含雙人、四人、樓中樓及親子房），空間寬敞。無論是幾個家庭聯合出遊，還是中小型公司的員工旅遊，我們的大型交誼廳與開放式空間都能讓大家齊聚一堂，不會感到擁擠。</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Q2：我們有帶小朋友，民宿有適合親子的設施嗎？</h4>
+                    <p>A：有的！我們特別設計了家庭房，房內附有小朋友最愛的溜滑梯設施，讓房間本身就是個小樂園。此外，民宿外圍有大片安全的草地，非常適合孩子們跑跳放電。</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Q3：請問可以帶寵物（毛孩）一起入住嗎？</h4>
+                    <p>A：當然可以！迪噢叢林旅宿是寵物友善民宿，我們非常歡迎毛孩與主人一起渡假。寵物入住會收取一次性費用 $500/隻，活動範圍以一樓交誼廳及指定的一樓客房為主。戶外的草皮絕對是狗狗們最愛的跑跳天堂！</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up">
+                    <h4>Q4：晚餐想在民宿烤肉或煮東西可以嗎？採買方便嗎？</h4>
+                    <p>A：絕對沒問題！我們提供「烤肉設備」與「開放式廚房」，讓大家可以一起享受下廚與烤肉的樂趣。最棒的是，民宿附近就有全聯福利中心與便利商店，即使臨時缺了酒水或烤肉食材，隨時都能輕鬆補給！</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Q5：民宿內有什麼娛樂設施？</h4>
+                    <p>A：我們為包棟旅客準備了豐富的娛樂設備！包含專業 KTV 系統、電動麻將桌，以及充滿懷舊風情的電動機台。無論是長輩打牌、年輕人唱歌，還是小朋友玩遊戲，所有人都能找到屬於自己的樂趣。</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Q6：停車方便嗎？</h4>
+                    <p>A：我們設有「專屬停車場」，空間充足，即使是多個家庭開多部車前來，也完全不用擔心尋找車位的煩惱。</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up">
+                    <h4>Q7：如何預訂及確認保留房間？</h4>
+                    <p>A：您可以直接點擊網頁上的「一鍵加 LINE 預約」與我們聯繫確認檔期，即可為您保留這片專屬的叢林秘境。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Rules Section -->
     <section id="rules" style="background-color: var(--dark); color: white;">
         <div class="section-divider divider-top" style="transform: rotate(0deg); top: -1px;">
@@ -1501,19 +1680,19 @@
                 <div class="rules-card" data-aos="fade-right">
                     <h3 class="serif">住宿注意事項</h3>
                     <ul class="rules-list">
-                        <li>我們退房時間為隔日11：00前，如需延遲退房每半小時酌收NT$2000。</li>
-                        <li>為維護兒童安全，請勿把小孩獨自留在民宿內及請照顧小孩於住宿期間內的安全，本民宿一概不負責。</li>
-                        <li>兒童不佔床規定：每房僅提供一位6歲以下兒童免費入住。</li>
-                        <li>如超出房型入住規定人數，加人費用NT$300, 加床NT$800（額外提供床墊、枕頭、被子、浴巾和牙刷）。</li>
-                        <li>每間房間只提供一把鑰匙，請妥善保管，若不慎遺失需賠償NT$500。</li>
-                        <li>民宿外圍都是草原，嚴禁放煙火。</li>
-                        <li>歡迎大家來舉辦慶生等活動，但請勿使用拉炮或噴條。</li>
-                        <li>本民宿配合政府法令，室內實施全面禁煙。</li>
-                        <li>嚴禁轟叭、嗑藥等違法行為，一經發現報警處理。</li>
-                        <li>如要帶寵物一同入住，必須出發前事先告知。</li>
-                        <li>民宿場地及設施都是免費提供使用的，我們都沒有額外收清潔費，請麻煩你們把垃圾收好集中，公設場地及廚房請保持整潔，使用過的餐具及杯子請自行清洗乾淨恢復原狀，如果環境太過髒亂我們會收$3000起的清潔費。</li>
-                        <li>入住需要收取NT$5000押金，退房後沒有問題全數退還。</li>
-                        <li>民宿內設備於住宿期間提供房客免費使用，所有公共設備不包含在房價內，若遇突發狀況設備故障不能使用，請立即反映處理！若還是無法恢復正常使用,本民宿不會退費若有損壞照價賠償。</li>
+                        <li><strong>退房時間</strong>：隔日 11:00 前。延遲退房每半小時加收 NT$2000。</li>
+                        <li><strong>兒童安全</strong>：請家長全程照看，勿讓兒童獨處，本民宿不負看護責任。</li>
+                        <li><strong>幼兒優惠</strong>：每房限一位 6 歲以下兒童免費入住（不佔床）。</li>
+                        <li><strong>加人加床</strong>：加人 NT$300/人，加床 NT$800/床（含寢具備品）。</li>
+                        <li><strong>房卡保管</strong>：每房提供一把鑰匙，遺失需賠償 NT$500。</li>
+                        <li><strong>嚴禁煙火</strong>：民宿周邊為草原區，全面禁止施放煙火。</li>
+                        <li><strong>慶祝規範</strong>：歡迎慶生活動，但請勿使用拉炮或噴條。</li>
+                        <li><strong>全面禁菸</strong>：配合法令，室內空間全面禁止吸菸。</li>
+                        <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，違者一律報警。</li>
+                        <li><strong>寵物規範</strong>：攜帶寵物請務必提前告知。</li>
+                        <li><strong>環境清潔</strong>：公共設施與廚房免費提供，使用後請歸位並做好垃圾分類。若環境過於髒亂，將收取 NT$3000 起清潔費。</li>
+                        <li><strong>押金制度</strong>：入住收取 NT$5000 押金，退房檢查無誤後全額退還。</li>
+                        <li><strong>設備使用</strong>：公共設備免費提供，若遇故障不另退費；人為損壞需照價賠償。</li>
                     </ul>
                 </div>
 
@@ -1539,11 +1718,30 @@
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <span>Guest Stories</span>
-                <h2 class="serif">顧客好評</h2>
-                <div class="divider"></div>
+                <h2 class="serif" style="color: white;">顧客好評</h2>
+                <div class="divider" style="background-color: var(--accent);"></div>
             </div>
-            <div class="reviews-grid" id="reviewsGrid">
-                <!-- Reviews will be loaded by JS -->
+
+            <div class="google-rating-summary" data-aos="fade-up">
+                <div class="rating-badge">
+                    <span class="rating-score">4.7</span>
+                    <div class="rating-info">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p style="font-size: 0.8rem; margin: 0; opacity: 0.8;">Google Maps 評分</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-scroll-wrapper" id="reviewsScrollWrapper">
+                <div class="reviews-grid" id="reviewsGrid">
+                    <!-- Reviews will be loaded by JS -->
+                </div>
             </div>
         </div>
     </section>
@@ -1685,21 +1883,53 @@
         const reviewsPool = [
             { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
             { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
-            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 }
+            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
+            { author: "Kevin Wang", content: "民宿設施非常齊全，特別是那個專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦給要找包棟民宿的朋友。", stars: 5 },
+            { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服。主人非常有耐心溝通，推推！", stars: 5 }
         ];
 
         const reviewsGrid = document.getElementById('reviewsGrid');
-        reviewsPool.forEach((review, index) => {
+        
+        // Pick 3 random 5-star reviews from the pool
+        const shuffledReviews = [...reviewsPool].sort(() => 0.5 - Math.random());
+        const selectedReviews = shuffledReviews.slice(0, 3);
+
+        selectedReviews.forEach((review, index) => {
             const card = document.createElement('div');
             card.className = 'review-card';
             card.setAttribute('data-aos', 'fade-up');
             card.setAttribute('data-aos-delay', index * 100);
             card.innerHTML = `
-                <div class="stars">${'★'.repeat(review.stars)}</div>
                 <div class="review-content">"${review.content}"</div>
                 <div class="review-author">${review.author}</div>
             `;
             reviewsGrid.appendChild(card);
+        });
+
+        // Horizontal Scroll Drag Support
+        const slider = document.getElementById('reviewsScrollWrapper');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
         });
 
         // Falling Leaves
