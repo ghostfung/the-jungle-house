@@ -14,8 +14,19 @@
     <title>迪噢叢林旅宿 | The Jungle House - 恆春墾丁包棟民宿首選</title>
     <meta name="description" content="迪噢叢林旅宿提供優質恆春包棟與墾丁包棟服務，Google 4.7星好評推薦！我們是優質墾丁寵物友善民宿，鄰近恆春市區全聯與南灣，提供專業KTV與烤肉設備，是家族旅遊、員工旅遊首選。">
     <meta name="keywords" content="墾丁包棟, 恆春包棟, 寵物友善民宿, 墾丁KTV民宿, 墾丁烤肉民宿, 家族旅遊, 員工旅遊, The Jungle House, 恆春民宿推薦, 墾丁民宿推薦, 恆春親子包棟, 墾丁CP值最高民宿">
-    <link rel="icon" href="photo/hengchun-jungle-house-logo.jpg" type="image/jpeg">
     
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="迪噢叢林旅宿 | The Jungle House - 恆春墾丁包棟民宿首選">
+    <meta property="og:description" content="恆春包棟、墾丁包棟首選！寵物友善、專業KTV、烤肉設備，家族旅遊與員工旅遊最佳選擇。">
+    <meta property="og:image" content="photo/public/hengchun-jungle-house-living-room.webp">
+    <meta property="og:url" content="https://thejunglehouse.tw">
+
+    <link rel="icon" href="photo/hengchun-jungle-house-logo.webp" type="image/webp">
+    
+    <!-- 1. 預加載 Hero 背景圖，提升 LCP 分數 -->
+    <link rel="preload" as="image" href="photo/public/hengchun-jungle-house-living-room.webp">
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -23,8 +34,8 @@
       "@type": "BedAndBreakfast",
       "name": "迪噢叢林旅宿 | The Jungle House",
       "image": [
-        "photo/public/hengchun-jungle-house-living-room.jpg",
-        "photo/hengchun-jungle-house-exterior.png"
+        "photo/public/hengchun-jungle-house-living-room.webp",
+        "photo/hengchun-jungle-house-exterior.webp"
       ],
       "description": "位於恆春墾丁的CP值最高包棟Villa民宿。我們是寵物友善旅宿，提供專業KTV設備、戶外烤肉區、電動麻將桌及寬敞開放式廚房. 空間可容納26人，擁有大片草地與親子溜滑梯房型。非常適合家族旅遊、公司員工旅遊。鄰近恆春市區全聯，生活機能極佳。",
       "address": {
@@ -92,14 +103,16 @@
     }
     </script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Fancybox 5 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- 2. 優化字體加載 (減少變體並加上 &display=swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- 3. 將非關鍵 CSS 異步化 (如 FontAwesome, AOS, Fancybox) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    
     <style>
         :root {
             --primary: #006D5B; /* 深叢林綠 */
@@ -359,7 +372,7 @@
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.15)), url('photo/public/hengchun-jungle-house-living-room.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.15)), url('photo/public/hengchun-jungle-house-living-room.webp') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1455,7 +1468,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="#home" class="logo">
-            <img src="photo/hengchun-jungle-house-logo.jpg" alt="迪噢叢林旅宿-恆春包棟首選-Logo">
+            <img src="photo/hengchun-jungle-house-logo.webp" alt="迪噢叢林旅宿-恆春包棟首選-Logo">
             <div class="logo-text-wrapper">
                 <span class="logo-cn">迪噢叢林旅宿</span>
                 <span class="logo-en">The Jungle House</span>
@@ -1514,7 +1527,7 @@
                 </div>
                 <div class="magazine-img-wrapper" data-aos="fade-left">
                     <div class="magazine-img-deco"></div>
-                    <img src="photo/hengchun-jungle-house-exterior.png" alt="迪噢叢林旅宿-恆春包棟民宿外觀實景" class="magazine-img" loading="lazy">
+                    <img src="photo/hengchun-jungle-house-exterior.webp" alt="迪噢叢林旅宿-恆春包棟民宿外觀實景" class="magazine-img" loading="lazy">
                 </div>
             </div>
 
@@ -1539,25 +1552,25 @@
                 <div class="carousel-wrapper">
                     <div class="carousel-track" id="carouselTrack">
                         <!-- Slide 1 -->
-                        <a href="photo/public/hengchun-jungle-house-living-room.jpg" data-fancybox="public" data-caption="恆春包棟民宿公共空間-客廳與KTV" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-living-room.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-living-room.webp" data-fancybox="public" data-caption="恆春包棟民宿公共空間-客廳與KTV" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-living-room.webp')"></a>
                         <!-- Slide 2 -->
-                        <a href="photo/public/hengchun-jungle-house-kitchen.jpg" data-fancybox="public" data-caption="恆春包棟民宿-開放式廚房" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-kitchen.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-kitchen.webp" data-fancybox="public" data-caption="恆春包棟民宿-開放式廚房" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-kitchen.webp')"></a>
                         <!-- Slide 3 -->
-                        <a href="photo/public/hengchun-jungle-house-dining-area.jpg" data-fancybox="public" data-caption="恆春包棟民宿-寬敞用餐區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-dining-area.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-dining-area.webp" data-fancybox="public" data-caption="恆春包棟民宿-寬敞用餐區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-dining-area.webp')"></a>
                         <!-- Slide 4 -->
-                        <a href="photo/public/hengchun-jungle-house-bbq.jpg" data-fancybox="public" data-caption="恆春包棟民宿-專業烤肉區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-bbq.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-bbq.webp" data-fancybox="public" data-caption="恆春包棟民宿-專業烤肉區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-bbq.webp')"></a>
                         <!-- Slide 5 -->
-                        <a href="photo/public/hengchun-jungle-house-mahjong.jpg" data-fancybox="public" data-caption="恆春包棟民宿-自動麻將桌" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-mahjong.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-mahjong.webp" data-fancybox="public" data-caption="恆春包棟民宿-自動麻將桌" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-mahjong.webp')"></a>
                         <!-- Slide 6 -->
-                        <a href="photo/public/hengchun-jungle-house-garden.jpg" data-fancybox="public" data-caption="恆春包棟民宿-戶外大草皮" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-garden.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-garden.webp" data-fancybox="public" data-caption="恆春包棟民宿-戶外大草皮" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-garden.webp')"></a>
                         <!-- Slide 7 -->
-                        <a href="photo/public/hengchun-jungle-house-lobby-ktv.jpg" data-fancybox="public" data-caption="恆春包棟民宿-KTV影音娛樂區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-lobby-ktv.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-lobby-ktv.webp" data-fancybox="public" data-caption="恆春包棟民宿-KTV影音娛樂區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-lobby-ktv.webp')"></a>
                         <!-- Slide 8 -->
-                        <a href="photo/public/hengchun-jungle-house-interior-decor.jpg" data-fancybox="public" data-caption="恆春包棟民宿-室內設計細節" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-interior-decor.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-interior-decor.webp" data-fancybox="public" data-caption="恆春包棟民宿-室內設計細節" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-interior-decor.webp')"></a>
                         <!-- Slide 9 -->
-                        <a href="photo/public/hengchun-jungle-house-entrance.jpg" data-fancybox="public" data-caption="恆春包棟民宿-大門入口" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-entrance.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-entrance.webp" data-fancybox="public" data-caption="恆春包棟民宿-大門入口" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-entrance.webp')"></a>
                         <!-- Slide 10 -->
-                        <a href="photo/public/hengchun-jungle-house-hallway.jpg" data-fancybox="public" data-caption="恆春包棟民宿-公共區域走廊" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-hallway.jpg')"></a>
+                        <a href="photo/public/hengchun-jungle-house-hallway.webp" data-fancybox="public" data-caption="恆春包棟民宿-公共區域走廊" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-hallway.webp')"></a>
                     </div>
                     <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                     <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -1578,12 +1591,12 @@
             <div class="room-grid">
                 <!-- Room 1 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/double/hengchun-jungle-house-double-room.jpg" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房">
-                        <div class="room-img" style="background-image: url('photo/double/hengchun-jungle-house-double-room.jpg')"></div>
+                    <a href="photo/double/hengchun-jungle-house-double-room.webp" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房">
+                        <div class="room-img" style="background-image: url('photo/double/hengchun-jungle-house-double-room.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/double/hengchun-jungle-house-double-room-interior-1.jpg" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房內裝-1"></a>
-                        <a href="photo/double/hengchun-jungle-house-double-room-interior-2.jpg" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房內裝-2"></a>
+                        <a href="photo/double/hengchun-jungle-house-double-room-interior-1.webp" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房內裝-1"></a>
+                        <a href="photo/double/hengchun-jungle-house-double-room-interior-2.webp" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房內裝-2"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">精緻雙人房</h3>
@@ -1596,12 +1609,12 @@
                 </div>
                 <!-- Room 2 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
-                    <a href="photo/quad/hengchun-jungle-house-quad-room.jpg" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房">
-                        <div class="room-img" style="background-image: url('photo/quad/hengchun-jungle-house-quad-room.jpg')"></div>
+                    <a href="photo/quad/hengchun-jungle-house-quad-room.webp" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房">
+                        <div class="room-img" style="background-image: url('photo/quad/hengchun-jungle-house-quad-room.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/quad/hengchun-jungle-house-quad-room-bed.jpg" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房床鋪"></a>
-                        <a href="photo/quad/hengchun-jungle-house-quad-room-view.jpg" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房窗景"></a>
+                        <a href="photo/quad/hengchun-jungle-house-quad-room-bed.webp" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房床鋪"></a>
+                        <a href="photo/quad/hengchun-jungle-house-quad-room-view.webp" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房窗景"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">溫馨四人房</h3>
@@ -1614,14 +1627,14 @@
                 </div>
                 <!-- Room 3 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
-                    <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-room.jpg" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房">
-                        <div class="room-img" style="background-image: url('photo/loft-6/hengchun-jungle-house-loft-6-person-room.jpg')"></div>
+                    <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-room.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房">
+                        <div class="room-img" style="background-image: url('photo/loft-6/hengchun-jungle-house-loft-6-person-room.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-living.jpg" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房客廳"></a>
-                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-bed-1.jpg" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房床鋪-1"></a>
-                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-bed-2.jpg" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房床鋪-2"></a>
-                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-stairs.jpg" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房樓梯設計"></a>
+                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-living.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房客廳"></a>
+                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-bed-1.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房床鋪-1"></a>
+                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-bed-2.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房床鋪-2"></a>
+                        <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-stairs.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房樓梯設計"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓六人房</h3>
@@ -1634,13 +1647,13 @@
                 </div>
                 <!-- Room 4 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-room.jpg" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房">
-                        <div class="room-img" style="background-image: url('photo/loft-4/hengchun-jungle-house-loft-4-person-room.jpg')"></div>
+                    <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-room.webp" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房">
+                        <div class="room-img" style="background-image: url('photo/loft-4/hengchun-jungle-house-loft-4-person-room.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-interior.jpg" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房內裝"></a>
-                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-bedroom.jpg" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房臥室"></a>
-                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-bathroom.jpg" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房衛浴"></a>
+                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-interior.webp" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房內裝"></a>
+                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-bedroom.webp" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房臥室"></a>
+                        <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-bathroom.webp" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房衛浴"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓四人房</h3>
@@ -1653,11 +1666,11 @@
                 </div>
                 <!-- Room 5 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
-                    <a href="photo/loft-family/hengchun-jungle-house-loft-family-room.jpg" data-fancybox="loft-family" data-caption="恆春包棟民宿-樓中樓家庭房">
-                        <div class="room-img" style="background-image: url('photo/loft-family/hengchun-jungle-house-loft-family-room.jpg')"></div>
+                    <a href="photo/loft-family/hengchun-jungle-house-loft-family-room.webp" data-fancybox="loft-family" data-caption="恆春包棟民宿-樓中樓家庭房">
+                        <div class="room-img" style="background-image: url('photo/loft-family/hengchun-jungle-house-loft-family-room.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/loft-family/hengchun-jungle-house-loft-family-room-details.jpg" data-fancybox="loft-family" data-caption="恆春包棟民宿-樓中樓家庭房細節"></a>
+                        <a href="photo/loft-family/hengchun-jungle-house-loft-family-room-details.webp" data-fancybox="loft-family" data-caption="恆春包棟民宿-樓中樓家庭房細節"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">樓中樓家庭房</h3>
@@ -1670,13 +1683,13 @@
                 </div>
                 <!-- Room 6 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
-                    <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.jpg" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)">
-                        <div class="room-img" style="background-image: url('photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.jpg')"></div>
+                    <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.webp" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)">
+                        <div class="room-img" style="background-image: url('photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-bed.jpg" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)床鋪"></a>
-                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-slide.jpg" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)溜滑梯"></a>
-                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-play-area.jpg" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)遊戲區"></a>
+                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-bed.webp" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)床鋪"></a>
+                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-slide.webp" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)溜滑梯"></a>
+                        <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink-play-area.webp" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)遊戲區"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">親子溜滑梯房 (粉)</h3>
@@ -1689,13 +1702,13 @@
                 </div>
                 <!-- Room 7 -->
                 <div class="room-card" data-aos="fade-up">
-                    <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green.jpg" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)">
-                        <div class="room-img" style="background-image: url('photo/kids-green/hengchun-jungle-house-kids-slide-room-green.jpg')"></div>
+                    <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green.webp" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)">
+                        <div class="room-img" style="background-image: url('photo/kids-green/hengchun-jungle-house-kids-slide-room-green.webp')"></div>
                     </a>
                     <div style="display:none;">
-                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-bed.jpg" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)床鋪"></a>
-                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-slide.jpg" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)溜滑梯"></a>
-                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-toys.jpg" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)玩具"></a>
+                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-bed.webp" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)床鋪"></a>
+                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-slide.webp" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)溜滑梯"></a>
+                        <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green-toys.webp" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)玩具"></a>
                     </div>
                     <div class="room-info">
                         <h3 class="serif">親子溜滑梯房 (綠)</h3>
@@ -1841,7 +1854,7 @@
                         <li><strong>嚴禁煙火</strong>：民宿周邊為草原區，全面禁止施放煙火.</li>
                         <li><strong>慶祝規範</strong>：歡迎慶生活動，但請勿使用拉炮 or 噴條.</li>
                         <li><strong>全面禁菸</strong>：配合法令，室內空間全面禁止吸菸.</li>
-                        <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，違者一律報警.</li>
+                        <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，維者一律報警.</li>
                         <li><strong>寵物規範</strong>：攜帶寵物請務必提前告知.</li>
                         <li><strong>環境清潔</strong>：公共設施與廚房免費提供，使用後請歸位並做好垃圾分類. 若環境過於髒亂，將收取 NT$3000 起清潔費.</li>
                         <li><strong>押金制度</strong>：入住收取 NT$5000 押金，退房檢查無誤後全額退還.</li>
