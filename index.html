@@ -129,6 +129,8 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* 防止水平溢出 */
+            width: 100%;
         }
 
         body {
@@ -136,8 +138,16 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 2; /* 增加行高 */
-            overflow-x: hidden;
+            overflow-x: hidden; /* 強制防止溢出 */
+            width: 100%;
             letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        /* 全域響應式圖片設定 */
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         h1, h2, h3, .serif {
@@ -146,11 +156,13 @@
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 30px;
             position: relative;
             z-index: 2;
+            box-sizing: border-box;
         }
 
         /* 植物裝飾元素 (現有) */
@@ -197,6 +209,7 @@
             padding: 40px 60px;
             z-index: 1000;
             transition: var(--transition);
+            box-sizing: border-box;
         }
 
         nav.scrolled {
@@ -241,6 +254,7 @@
 
         .logo img {
             height: 50px;
+            width: auto; /* 確保 logo 比例正確 */
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.5);
             transition: var(--transition);
@@ -352,6 +366,7 @@
             text-align: center;
             color: var(--white);
             position: relative;
+            overflow: hidden;
         }
 
         .hero::after {
@@ -366,6 +381,8 @@
 
         .hero-content {
             z-index: 2;
+            width: 100%;
+            padding: 0 20px;
         }
 
         .hero-title {
@@ -402,11 +419,14 @@
         section {
             padding: 150px 0; /* 增加呼吸感 */
             position: relative;
+            width: 100%;
+            overflow: hidden; /* 防止各區塊裝飾溢出 */
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 100px;
+            padding: 0 20px;
         }
 
         .section-title span {
@@ -496,10 +516,12 @@
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
+            width: 100%;
             max-width: 1000px;
             margin: 0 auto;
             border-radius: 15px;
             box-shadow: var(--shadow-hover);
+            box-sizing: border-box;
         }
 
         .video-container iframe {
@@ -514,6 +536,7 @@
         /* --- Carousel --- */
         .carousel-container {
             margin-top: 150px;
+            width: 100%;
         }
 
         .carousel-wrapper {
@@ -744,10 +767,13 @@
         .pricing-table-container {
             overflow-x: auto;
             margin-top: 50px;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
         }
 
         .pricing-table {
             width: 100%;
+            min-width: 600px; /* 確保在小螢幕上可以滾動而不是被壓縮 */
             border-collapse: separate;
             border-spacing: 0;
             background: white;
@@ -787,6 +813,8 @@
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .faq-item {
@@ -796,6 +824,8 @@
             border-radius: 8px;
             border-left: 4px solid var(--accent);
             transition: var(--transition);
+            box-sizing: border-box;
+            max-width: 100%;
         }
 
         .faq-item:hover {
@@ -822,6 +852,9 @@
             .faq-grid {
                 grid-template-columns: 1fr;
             }
+            .faq-item {
+                padding: 25px;
+            }
         }
 
         /* --- Rules Section --- */
@@ -836,6 +869,7 @@
             padding: 60px;
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(5px);
+            box-sizing: border-box;
         }
 
         .rules-card h3 {
@@ -1052,6 +1086,7 @@
             padding: 20px 0 60px 0;
             cursor: grab;
             scrollbar-width: none; /* Firefox */
+            -webkit-overflow-scrolling: touch;
         }
 
         .reviews-scroll-wrapper::-webkit-scrollbar {
@@ -1077,6 +1112,7 @@
             position: relative;
             transition: var(--transition);
             backdrop-filter: blur(5px);
+            box-sizing: border-box;
         }
         
         .review-card:hover {
@@ -1127,6 +1163,8 @@
             background: var(--white);
             padding: 60px 0;
             border-top: 1px solid #eee;
+            width: 100%;
+            overflow: hidden;
         }
 
         .landmark-grid {
@@ -1181,6 +1219,7 @@
             padding: 60px;
             background: var(--white);
             box-shadow: var(--shadow);
+            box-sizing: border-box;
         }
 
         .info-item {
@@ -1239,6 +1278,8 @@
             letter-spacing: 1px;
             /* Add animation */
             animation: pulse-glow 2.5s infinite ease-in-out;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .line-btn img {
@@ -1259,6 +1300,8 @@
             min-height: 550px;
             box-shadow: var(--shadow-hover);
             filter: grayscale(20%) contrast(1.1);
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .map-container iframe {
@@ -1275,6 +1318,7 @@
             flex-direction: column;
             gap: 20px;
             z-index: 1000;
+            pointer-events: none; /* 允許點擊穿過容器，除非點擊到按鈕 */
         }
 
         .fab {
@@ -1289,6 +1333,8 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             transition: var(--transition);
             font-size: 1.6rem;
+            pointer-events: auto; /* 恢復按鈕點擊 */
+            position: relative;
         }
 
         .fab:hover {
@@ -1304,6 +1350,7 @@
             color: white;
             text-align: center;
             padding: 100px 0;
+            width: 100%;
         }
 
         footer h3 {
@@ -1347,9 +1394,24 @@
             .slide { height: 500px; }
             .pricing-table th, .pricing-table td { padding: 20px 15px; font-size: 0.9rem; }
             .highlight-price { font-size: 1.3rem; }
-            .fab-container { bottom: 30px; right: 30px; }
-            .fab { width: 55px; height: 55px; font-size: 1.3rem; }
             
+            /* FAB 調整以防止溢出與遮擋 */
+            .fab-container { 
+                bottom: 20px; 
+                right: 20px; 
+                gap: 15px;
+            }
+            .fab { 
+                width: 50px; 
+                height: 50px; 
+                font-size: 1.2rem; 
+            }
+            
+            /* 防止潛在的 Tooltip 推開網頁 */
+            .fab::after {
+                display: none !important; /* 手機版通常不顯示 hover tooltip */
+            }
+
             /* 設施指南網格化優化 */
             .amenities-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -1364,6 +1426,22 @@
                 display: block;
                 line-height: 1.2;
             }
+
+            .contact-info {
+                padding: 40px 25px;
+            }
+            
+            .magazine-img-wrapper {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.2rem; letter-spacing: 3px; }
+            .section-title h2 { font-size: 2rem; }
+            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 0 20px; }
+            .pricing-table th, .pricing-table td { padding: 15px 10px; }
         }
     </style>
 </head>
@@ -1401,7 +1479,7 @@
 
     <!-- Hero Banner -->
     <header id="home" class="hero">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500" style="margin-top: 200px;">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500" style="margin-top: 100px;">
             <h1 class="hero-title serif">墾丁包棟首選 The Jungle House</h1>
             <p style="font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 30px;">恆春包棟 | 寵物友善 | CP值最高渡假住宿</p>
             <a href="#rooms" class="btn">立即探索</a>
@@ -1761,7 +1839,7 @@
                         <li><strong>加人加床</strong>：加人 NT$300/人，加床 NT$800/床（含寢具備品）.</li>
                         <li><strong>房卡保管</strong>：每房提供一把鑰匙，遺失需賠償 NT$500.</li>
                         <li><strong>嚴禁煙火</strong>：民宿周邊為草原區，全面禁止施放煙火.</li>
-                        <li><strong>慶祝規範</strong>：歡迎慶生活動，但請勿使用拉炮或噴條.</li>
+                        <li><strong>慶祝規範</strong>：歡迎慶生活動，但請勿使用拉炮 or 噴條.</li>
                         <li><strong>全面禁菸</strong>：配合法令，室內空間全面禁止吸菸.</li>
                         <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，違者一律報警.</li>
                         <li><strong>寵物規範</strong>：攜帶寵物請務必提前告知.</li>
