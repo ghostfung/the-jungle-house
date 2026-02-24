@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google tag (gtag.js) -->
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNCCXYKCPW"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,22 +11,17 @@
       gtag('js', new Date());
       gtag('config', 'G-KNCCXYKCPW');
     </script>
-    <meta charset="UTF-8">
-    <!-- 1. Fix Best Practices: HTTPS Upgrade -->
+    
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     
-    <!-- 2. Fix SEO: Title & Description -->
     <title>迪噢叢林旅宿 | 恆春包棟民宿 | The Jungle House</title>
     <meta name="description" content="迪噢叢林旅宿提供恆春包棟住宿、寵物友善空間、KTV 與 BBQ 設施，是您南國度假的首選。">
     <meta name="keywords" content="墾丁包棟, 恆春包棟, 寵物友善民宿, 墾丁KTV民宿, 墾丁烤肉民宿, 家族旅遊, 員工旅遊, The Jungle House, 恆春民宿推薦, 墾丁民宿推薦, 恆春親子包棟, 墾丁CP值最高民宿">
     
-    <!-- 3. Fix 404 & Favicon -->
     <link rel="icon" href="photo/hengchun-jungle-house-logo.webp" type="image/webp">
     
-    <!-- 4. Fix LCP: Preload Hero Image with High Priority -->
     <link rel="preload" as="image" href="photo/public/hengchun-jungle-house-living-room.webp" fetchpriority="high">
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,7 +67,6 @@
     }
     </script>
 
-    <!-- FAQ Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -101,12 +96,10 @@
     }
     </script>
 
-    <!-- 2. 優化字體加載 (減少變體並加上 &display=swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- 3. 將非關鍵 CSS 異步化 (如 FontAwesome, AOS, Fancybox) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -120,95 +113,37 @@
             --white: #FFFFFF;
             --shadow: 0 20px 40px rgba(0,0,0,0.05);
             --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.4s ease-in-out;
         }
 
         /* Fancybox Customization */
         body .fancybox__backdrop {
-            background: rgba(0, 109, 91, 0.95); /* 半透明深綠色 #006D5B */
+            background: rgba(0, 109, 91, 0.95); 
         }
-        
         body .fancybox__caption {
             font-family: 'Noto Sans TC', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden; /* 防止水平溢出 */
-            width: 100%;
-        }
+        html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
         body {
             font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 2; /* 增加行高 */
-            overflow-x: hidden; /* 強制防止溢出 */
+            line-height: 2; 
+            overflow-x: hidden; 
             width: 100%;
             letter-spacing: 0.05em;
             position: relative;
         }
 
-        /* 全域響應式圖片設定 */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        img { max-width: 100%; height: auto; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 30px; position: relative; z-index: 2; box-sizing: border-box; }
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-            position: relative;
-            z-index: 2;
-            box-sizing: border-box;
-        }
-
-        /* 植物裝飾元素 (現有) */
-        .leaf-decoration {
-            position: absolute;
-            z-index: 1;
-            opacity: 0.08;
-            pointer-events: none;
-            filter: grayscale(20%);
-        }
-
-        .leaf-1 { top: 10%; right: -5%; width: 400px; transform: rotate(15deg); }
-        .leaf-2 { bottom: 5%; left: -10%; width: 500px; transform: rotate(-15deg); }
-        .leaf-3 { top: 40%; left: -5%; width: 350px; opacity: 0.05; transform: rotate(45deg); }
-
-        /* SVG Section Dividers */
-        .section-divider {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            overflow: hidden;
-            line-height: 0;
-            z-index: 5;
-        }
-        .divider-top { top: -1px; transform: rotate(180deg); }
-        .divider-bottom { bottom: -1px; }
-        .section-divider svg {
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 100px;
-            fill: var(--light);
-        }
-
-        /* --- Navigation --- */
+        /* --- 修正後的 Navigation 樣式 --- */
         nav {
             position: fixed;
             top: 0;
@@ -217,1236 +152,294 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 40px 60px;
+            padding: 30px 60px;
             z-index: 1000;
-            transition: var(--transition);
-            box-sizing: border-box;
+            transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+            background-color: transparent; 
         }
 
         nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 20px 60px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.03);
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            z-index: 1001;
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; z-index: 1001; }
+        .logo-text-wrapper { display: flex; flex-direction: column; }
+
+        .logo-cn { 
+            font-weight: 700; font-size: 1.4rem; color: var(--white); 
+            letter-spacing: 4px; transition: color 0.3s ease; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+        }
+        .logo-en { 
+            font-family: 'Dancing Script', cursive; font-size: 1rem; color: var(--white); 
+            margin-top: -2px; transition: color 0.3s ease; opacity: 0.9; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+        }
+        
+        .logo img { 
+            height: 50px; width: auto; border-radius: 50%; 
+            border: 2px solid rgba(255,255,255,0.8); 
+            transition: border-color 0.3s ease;
+            background-color: #fff; 
         }
 
-        .logo-text-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-cn {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--white);
-            letter-spacing: 4px;
-            transition: var(--transition);
-        }
-
-        .logo-en {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1rem;
-            color: var(--white);
-            margin-top: -2px;
-            transition: var(--transition);
-            opacity: 0.9;
-        }
-
-        nav.scrolled .logo-cn, .nav-active .logo-cn { color: var(--primary); }
-        nav.scrolled .logo-en, .nav-active .logo-en { color: var(--accent); }
-
-        .logo img {
-            height: 50px;
-            width: auto; /* 確保 logo 比例正確 */
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.5);
-            transition: var(--transition);
-        }
-
+        nav.scrolled .logo-cn { color: var(--primary); text-shadow: none; }
+        nav.scrolled .logo-en { color: var(--accent); text-shadow: none; }
         nav.scrolled .logo img { border-color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
+        .nav-links { display: flex; list-style: none; gap: 40px; }
+        .nav-links a { 
+            text-decoration: none; color: var(--white); font-weight: 600; 
+            transition: color 0.3s ease; font-size: 0.95rem; position: relative; 
+            letter-spacing: 2px; text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 400;
-            transition: var(--transition);
-            font-size: 0.95rem;
-            position: relative;
-            letter-spacing: 2px;
-        }
-
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent);
-            transition: var(--transition);
-            transform: translateX(-50%);
+            content: ''; position: absolute; bottom: -8px; left: 50%; width: 0; height: 2px;
+            background-color: var(--accent); transition: width 0.3s ease, transform 0.3s ease; transform: translateX(-50%);
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        nav.scrolled .nav-links a {
-            color: var(--dark);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        nav.scrolled .nav-links a { color: var(--dark); text-shadow: none; font-weight: 500; }
+        nav.scrolled .nav-links a:hover { color: var(--accent); }
 
         .nav-links.active {
-            display: flex !important;
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            width: 220px;
-            height: auto;
-            max-height: calc(100vh - 30px);
-            background-color: rgba(26, 47, 47, 0.95);
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 40px 0 25px 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            z-index: 10000;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex !important; position: fixed; top: 15px; right: 15px; width: 220px; height: auto;
+            max-height: calc(100vh - 30px); background-color: rgba(26, 47, 47, 0.98); flex-direction: column;
+            justify-content: center; align-items: flex-start; padding: 40px 0 25px 35px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); z-index: 10000; border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .nav-links.active li { margin: 0; width: 100%; text-align: left; }
+        .nav-links.active a { font-size: 1rem; color: var(--white) !important; display: block; padding: 6px 0; letter-spacing: 2px; text-shadow: none; }
 
-        .nav-links.active li {
-            margin: 0;
-            width: 100%;
-            text-align: left;
-        }
-
-        .nav-links.active a {
-            font-size: 1rem;
-            color: var(--white) !important;
-            display: block;
-            padding: 6px 0;
-            letter-spacing: 2px;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 8px;
-            z-index: 10001; /* 確保漢堡圖示 z-index 足夠高 */
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 30px;
-            height: 2px;
-            background-color: var(--white);
-            transition: var(--transition);
-        }
-
-        nav.scrolled .menu-toggle span, .nav-active .menu-toggle span {
-            background-color: var(--primary);
-        }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 8px; z-index: 10001; }
+        .menu-toggle span { display: block; width: 30px; height: 3px; background-color: var(--white); transition: background-color 0.3s ease; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        nav.scrolled .menu-toggle span { background-color: var(--primary); box-shadow: none; }
 
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.15)), url('photo/public/hengchun-jungle-house-living-room.webp') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
+            display: flex; justify-content: center; align-items: center; text-align: center; color: var(--white); position: relative; overflow: hidden;
         }
-
         .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(to top, var(--light), transparent);
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, var(--light), transparent);
         }
-
-        .hero-content {
-            z-index: 2;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .hero-title {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            letter-spacing: 10px;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
+        .hero-content { z-index: 2; width: 100%; padding: 0 20px; }
+        .hero-title { font-size: 5rem; margin-bottom: 30px; letter-spacing: 10px; text-shadow: 0 5px 20px rgba(0,0,0,0.2); }
         .btn {
-            display: inline-block;
-            padding: 18px 50px;
-            background-color: var(--accent);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 0;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 1px solid var(--accent);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+            display: inline-block; padding: 18px 50px; background-color: var(--accent); color: var(--white);
+            text-decoration: none; border-radius: 0; font-weight: 600; transition: var(--transition);
+            border: 1px solid var(--accent); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;
             box-shadow: 0 10px 20px rgba(212, 163, 115, 0.2);
         }
-
         .btn:hover {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 109, 91, 0.25);
+            background-color: var(--primary); border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 109, 91, 0.25);
         }
 
         /* --- Section Titles --- */
-        section {
-            padding: 150px 0; /* 增加呼吸感 */
-            position: relative;
-            width: 100%;
-            overflow: hidden; /* 防止各區塊裝飾溢出 */
-        }
+        section { padding: 150px 0; position: relative; width: 100%; overflow: hidden; }
+        .section-title { text-align: center; margin-bottom: 100px; padding: 0 20px; }
+        .section-title span { display: block; font-family: 'Dancing Script', cursive; color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
+        .section-title h2 { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; letter-spacing: 5px; }
+        .section-title .divider { width: 80px; height: 2px; background-color: var(--accent); margin: 0 auto; }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 100px;
-            padding: 0 20px;
-        }
+        /* SVG Section Dividers */
+        .section-divider { position: absolute; left: 0; width: 100%; height: 100px; overflow: hidden; line-height: 0; z-index: 5; }
+        .divider-top { top: -1px; transform: rotate(180deg); }
+        .section-divider svg { display: block; width: calc(100% + 1.3px); height: 100px; fill: var(--light); }
 
-        .section-title span {
-            display: block;
-            font-family: 'Dancing Script', cursive;
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .section-title h2 {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            letter-spacing: 5px;
-        }
-
-        .section-title .divider {
-            width: 80px;
-            height: 2px;
-            background-color: var(--accent);
-            margin: 0 auto;
-        }
-
-        /* --- About Section (Magazine Style) --- */
-        .about-magazine {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 100px;
-            align-items: center;
-        }
-
-        .magazine-content {
-            padding-right: 50px;
-        }
-
-        .magazine-tag {
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            display: block;
-            font-weight: 600;
-        }
-
-        .magazine-title {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 40px;
-            color: var(--primary);
-        }
-
-        .magazine-text p {
-            margin-bottom: 30px;
-            color: #222; /* 加深內文顏色以提升閱讀對比度 */
-            font-size: 1.1rem;
-            text-align: justify;
-            font-weight: 400; /* 加粗一點字重 */
-        }
-
-        .magazine-img-wrapper {
-            position: relative;
-            height: 600px;
-        }
-
-        .magazine-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            box-shadow: var(--shadow-hover);
-        }
-
-        .magazine-img-deco {
-            position: absolute;
-            top: -40px;
-            left: -40px;
-            width: 200px;
-            height: 200px;
-            border: 1px solid var(--accent);
-            z-index: -1;
-        }
+        /* --- About Section --- */
+        .about-magazine { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 100px; align-items: center; }
+        .magazine-content { padding-right: 50px; }
+        .magazine-tag { text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; color: var(--accent); margin-bottom: 20px; display: block; font-weight: 600; }
+        .magazine-title { font-size: 3.5rem; line-height: 1.2; margin-bottom: 40px; color: var(--primary); }
+        .magazine-text p { margin-bottom: 30px; color: #222; font-size: 1.1rem; text-align: justify; font-weight: 400; }
+        .magazine-img-wrapper { position: relative; height: 600px; }
+        .magazine-img { width: 100%; height: 100%; object-fit: cover; box-shadow: var(--shadow-hover); }
+        .magazine-img-deco { position: absolute; top: -40px; left: -40px; width: 200px; height: 200px; border: 1px solid var(--accent); z-index: -1; }
 
         /* --- Video Section --- */
         .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 15px;
-            box-shadow: var(--shadow-hover);
-            box-sizing: border-box;
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 15px; box-shadow: var(--shadow-hover); box-sizing: border-box;
         }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         /* --- Carousel --- */
-        .carousel-container {
-            margin-top: 150px;
-            width: 100%;
-        }
-
-        .carousel-wrapper {
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-hover);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 750px;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            position: relative;
-            display: block; /* 確保 a tag 表現為區塊 */
-        }
-        
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
+        .carousel-container { margin-top: 150px; width: 100%; }
+        .carousel-wrapper { width: 100%; margin: 0 auto; position: relative; overflow: hidden; box-shadow: var(--shadow-hover); }
+        .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        .slide { min-width: 100%; height: 750px; background-size: cover; background-position: center; cursor: pointer; position: relative; display: block; }
+        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); transition: var(--transition); }
         .slide:hover::after { background: rgba(0,0,0,0); }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            border: none;
-            width: 70px;
-            height: 70px;
-            cursor: pointer;
-            z-index: 10;
-            transition: var(--transition);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .carousel-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: none; width: 70px; height: 70px; cursor: pointer; z-index: 10; transition: var(--transition); display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: white; }
+        .carousel-btn:hover { background: var(--primary); color: white; }
         .prev { left: 30px; }
         .next { right: 30px; }
 
         /* --- Rooms --- */
-        .room-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 60px;
-        }
-
-        .room-card {
-            background: var(--white);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .room-card:hover {
-            transform: translateY(-20px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .room-img {
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .room-img::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,109,91,0.2);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .room-card:hover .room-img::before {
-            opacity: 1;
-        }
-
+        .room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; }
+        .room-card { background: var(--white); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid rgba(0,0,0,0.03); }
+        .room-card:hover { transform: translateY(-20px); box-shadow: var(--shadow-hover); }
+        .room-img { height: 400px; background-size: cover; background-position: center; position: relative; overflow: hidden; cursor: pointer; }
+        .room-img::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,109,91,0.2); opacity: 0; transition: var(--transition); }
+        .room-card:hover .room-img::before { opacity: 1; }
         .room-img::after {
-            content: 'VIEW DETAILS';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateY(20px);
-            background: var(--white);
-            color: var(--primary);
-            padding: 12px 25px;
-            opacity: 0;
-            transition: var(--transition);
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            content: 'VIEW DETAILS'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateY(20px);
+            background: var(--white); color: var(--primary); padding: 12px 25px; opacity: 0; transition: var(--transition); letter-spacing: 3px; font-size: 0.8rem; font-weight: 600;
         }
-
-        .room-card:hover .room-img::after {
-            opacity: 1;
-            transform: translate(-50%, -50%) translateY(0);
-        }
-
-        .room-info {
-            padding: 45px;
-        }
-
-        .room-info h3 {
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 20px;
-        }
-        
-        .room-info h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 40px; height: 1px;
-            background: var(--accent);
-        }
-
-        .room-info p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .amenities {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            color: #999;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .amenity-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .room-card:hover .room-img::after { opacity: 1; transform: translate(-50%, -50%) translateY(0); }
+        .room-info { padding: 45px; }
+        .room-info h3 { margin-bottom: 25px; font-size: 1.8rem; color: var(--primary); position: relative; padding-bottom: 20px; }
+        .room-info h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 1px; background: var(--accent); }
+        .room-info p { font-size: 1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
+        .amenities { display: flex; flex-wrap: wrap; gap: 25px; color: #999; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .amenity-item { display: flex; align-items: center; gap: 10px; }
 
         /* --- Global Amenities --- */
-        .global-amenities {
-            margin-top: 150px;
-            background: var(--white);
-            padding: 100px 60px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        
-        .global-amenities::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 100px; height: 4px;
-            background: var(--primary);
-        }
-
-        .global-amenities h3 {
-            text-align: center;
-            margin-bottom: 70px;
-            font-size: 2.2rem;
-            color: var(--primary);
-            letter-spacing: 3px;
-        }
-
-        .amenities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 50px;
-        }
-
-        .amenity-box {
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .amenity-box:hover {
-            transform: translateY(-10px);
-        }
-
-        .amenity-box i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            display: block;
-            transition: var(--transition);
-        }
-        
-        .amenity-box:hover i {
-            color: var(--primary);
-        }
-
-        .amenity-box span {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--dark);
-            letter-spacing: 1px;
-        }
+        .global-amenities { margin-top: 150px; background: var(--white); padding: 100px 60px; box-shadow: var(--shadow); position: relative; }
+        .global-amenities::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--primary); }
+        .global-amenities h3 { text-align: center; margin-bottom: 70px; font-size: 2.2rem; color: var(--primary); letter-spacing: 3px; }
+        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 50px; }
+        .amenity-box { text-align: center; transition: var(--transition); }
+        .amenity-box:hover { transform: translateY(-10px); }
+        .amenity-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: block; transition: var(--transition); }
+        .amenity-box:hover i { color: var(--primary); }
+        .amenity-box span { font-size: 0.95rem; font-weight: 500; color: var(--dark); letter-spacing: 1px; }
 
         /* --- Pricing --- */
-        .pricing-table-container {
-            overflow-x: auto;
-            margin-top: 50px;
-            width: 100%;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .pricing-table {
-            width: 100%;
-            min-width: 600px; /* 確保在小螢幕上可以滾動而不是被壓縮 */
-            border-collapse: separate;
-            border-spacing: 0;
-            background: white;
-            box-shadow: var(--shadow);
-        }
-
-        .pricing-table th, .pricing-table td {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .pricing-table th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .pricing-table td {
-            border-bottom: 1px solid #f5f5f5;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .highlight-price {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-        }
+        .pricing-table-container { overflow-x: auto; margin-top: 50px; width: 100%; -webkit-overflow-scrolling: touch; }
+        .pricing-table { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; background: white; box-shadow: var(--shadow); }
+        .pricing-table th, .pricing-table td { padding: 40px; text-align: center; }
+        .pricing-table th { background-color: var(--primary); color: white; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
+        .pricing-table td { border-bottom: 1px solid #f5f5f5; font-size: 1.1rem; color: #555; }
+        .highlight-price { color: var(--accent); font-weight: 700; font-size: 1.8rem; font-family: 'Playfair Display', serif; }
 
         /* --- FAQ --- */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .faq-item {
-            background: var(--white);
-            padding: 35px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-            transition: var(--transition);
-            box-sizing: border-box;
-            max-width: 100%;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .faq-item h4 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.6;
-        }
-
-        .faq-item p {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        @media (max-width: 768px) {
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            .faq-item {
-                padding: 25px;
-            }
-        }
+        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-top: 50px; width: 100%; box-sizing: border-box; }
+        .faq-item { background: var(--white); padding: 35px; box-shadow: var(--shadow); border-radius: 8px; border-left: 4px solid var(--accent); transition: var(--transition); box-sizing: border-box; max-width: 100%; }
+        .faq-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+        .faq-item h4 { font-size: 1.1rem; color: var(--primary); margin-bottom: 15px; font-weight: 700; line-height: 1.6; }
+        .faq-item p { font-size: 0.95rem; color: #555; line-height: 1.8; font-weight: 300; }
 
         /* --- Rules Section --- */
-        .rules-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
+        .rules-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .rules-card { background: rgba(255,255,255,0.03); padding: 60px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); box-sizing: border-box; }
+        .rules-card h3 { color: var(--accent); margin-bottom: 40px; font-size: 2rem; letter-spacing: 2px; }
+        .rules-list { list-style: none; }
+        .rules-list li { position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1rem; opacity: 0.8; line-height: 1.8; font-weight: 300; }
+        .rules-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .pet-rules li::before { content: '\f1b0'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.8rem; }
+        .pet-friendly-card { background-color: #fdfaf5 !important; border: none !important; box-shadow: var(--shadow); color: var(--dark) !important; position: relative; overflow: hidden; }
+        .pet-friendly-card::after { content: '\f1b0'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -30px; right: -20px; font-size: 12rem; color: rgba(212, 163, 115, 0.05); transform: rotate(-15deg); pointer-events: none; }
+        .pet-friendly-card h3 { color: var(--primary) !important; }
+        .pet-friendly-card .rules-list li { color: #555; opacity: 1; }
 
-        .rules-card {
-            background: rgba(255,255,255,0.03);
-            padding: 60px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            box-sizing: border-box;
-        }
-
-        .rules-card h3 {
-            color: var(--accent);
-            margin-bottom: 40px;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-
-        .rules-list {
-            list-style: none;
-        }
-
-        .rules-list li {
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            opacity: 0.8;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .rules-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .pet-rules li::before {
-            content: '\f1b0';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 0.8rem;
-        }
-
-        .pet-friendly-card {
-            background-color: #fdfaf5 !important;
-            border: none !important;
-            box-shadow: var(--shadow);
-            color: var(--dark) !important;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Falling Leaves Animation */
-        .leaf-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 100; /* 確保落葉在最上層 */
-        }
-
-        .falling-leaf {
-            position: absolute;
-            top: -100px;
-            color: #004d40;
-            opacity: 0.6;
-            font-size: 2rem;
-            animation: fall linear forwards;
-            z-index: 100;
-        }
-
+        /* Animations */
+        .leaf-container, .sunbeam-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
+        .leaf-container { z-index: 100; }
+        .sunbeam-container { z-index: 5; }
+        .falling-leaf { position: absolute; top: -100px; color: #004d40; opacity: 0.6; font-size: 2rem; animation: fall linear forwards; z-index: 100; }
         @keyframes fall {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(100vh) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(100vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
-
-        /* Sunbeam Effect - Redesign */
-        .sunbeam-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        .beam {
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 200%;
-            height: 40%;
-            background: linear-gradient(115deg, 
-                transparent 20%, 
-                rgba(255, 223, 0, 0.15) 25%, 
-                transparent 30%
-            );
-            transform: rotate(-15deg);
-            animation: beamMove 10s ease-in-out infinite alternate;
-        }
-
-        .beam:nth-child(2) {
-            top: 10%;
-            animation-delay: -2s;
-            animation-duration: 12s;
-            opacity: 0.7;
-        }
-
-        .beam:nth-child(3) {
-            top: 40%;
-            animation-delay: -5s;
-            animation-duration: 15s;
-            opacity: 0.5;
-        }
-
-        @keyframes beamMove {
-            0% { transform: translate(-10%, -10%) rotate(-15deg); }
-            100% { transform: translate(10%, 10%) rotate(-15deg); }
-        }
-
-        /* Paw Print Animation */
-        .paw-print {
-            position: absolute;
-            color: rgba(93, 64, 55, 0.25); /* 深咖啡色 (#5D4037) 透明度 0.25 */
-            font-size: 1.5rem;
-            pointer-events: none;
-            z-index: 2;
-            animation: pawFade 3s forwards; /* 每個腳印維持 3 秒 */
-        }
-
-        @keyframes pawFade {
-            0% { opacity: 0; transform: scale(0.8); }
-            10% { opacity: 1; transform: scale(1); }
-            80% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.1); }
-        }
-
-        .pet-friendly-card::after {
-            content: '\f1b0';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            bottom: -30px;
-            right: -20px;
-            font-size: 12rem;
-            color: rgba(212, 163, 115, 0.05);
-            transform: rotate(-15deg);
-            pointer-events: none;
-        }
-
-        .pet-friendly-card h3 {
-            color: var(--primary) !important;
-        }
-
-        .pet-friendly-card .rules-list li {
-            color: #555;
-            opacity: 1;
-        }
+        .beam { position: absolute; top: -20%; left: -10%; width: 200%; height: 40%; background: linear-gradient(115deg, transparent 20%, rgba(255, 223, 0, 0.15) 25%, transparent 30%); transform: rotate(-15deg); animation: beamMove 10s ease-in-out infinite alternate; }
+        .beam:nth-child(2) { top: 10%; animation-delay: -2s; animation-duration: 12s; opacity: 0.7; }
+        .beam:nth-child(3) { top: 40%; animation-delay: -5s; animation-duration: 15s; opacity: 0.5; }
+        @keyframes beamMove { 0% { transform: translate(-10%, -10%) rotate(-15deg); } 100% { transform: translate(10%, 10%) rotate(-15deg); } }
+        .paw-print { position: absolute; color: rgba(93, 64, 55, 0.25); font-size: 1.5rem; pointer-events: none; z-index: 2; animation: pawFade 3s forwards; }
+        @keyframes pawFade { 0% { opacity: 0; transform: scale(0.8); } 10% { opacity: 1; transform: scale(1); } 80% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.1); } }
 
         /* --- Reviews Section --- */
-        #reviews {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 120px 0;
-            overflow: hidden;
-        }
-
-        .google-rating-summary {
-            text-align: center;
-            margin-bottom: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .rating-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .rating-score {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .rating-stars {
-            color: #FFD700; /* Gold */
-            font-size: 1.2rem;
-        }
-
-        .reviews-scroll-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            padding: 20px 0 60px 0;
-            cursor: grab;
-            scrollbar-width: none; /* Firefox */
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .reviews-scroll-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
-
-        .reviews-grid {
-            display: flex;
-            gap: 30px;
-            padding: 0 30px;
-            width: max-content;
-        }
-
-        .review-card {
-            background: rgba(255, 255, 255, 0.08);
-            width: 400px;
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            position: relative;
-            transition: var(--transition);
-            backdrop-filter: blur(5px);
-            box-sizing: border-box;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .review-card::before {
-            content: '\f10d'; /* quote-left */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 30px; right: 40px;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.1);
-        }
-
-        .review-content {
-            font-size: 1.1rem;
-            color: var(--white);
-            font-style: italic;
-            font-weight: 300;
-            line-height: 1.8;
-            flex-grow: 1;
-        }
-
-        .review-author {
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .review-author::before {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: var(--white);
-            opacity: 0.3;
-        }
+        #reviews { background-color: var(--primary); color: var(--white); padding: 120px 0; overflow: hidden; }
+        .google-rating-summary { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .rating-badge { background: rgba(255, 255, 255, 0.1); padding: 15px 30px; border-radius: 50px; display: inline-flex; align-items: center; gap: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .rating-score { font-size: 2.2rem; font-weight: 700; color: var(--white); }
+        .rating-stars { color: #FFD700; font-size: 1.2rem; }
+        .reviews-scroll-wrapper { width: 100%; overflow-x: auto; padding: 20px 0 60px 0; cursor: grab; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .reviews-scroll-wrapper::-webkit-scrollbar { display: none; }
+        .reviews-grid { display: flex; gap: 30px; padding: 0 30px; width: max-content; }
+        .review-card { background: rgba(255, 255, 255, 0.08); width: 400px; padding: 50px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; gap: 25px; position: relative; transition: var(--transition); backdrop-filter: blur(5px); box-sizing: border-box; }
+        .review-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.12); }
+        .review-card::before { content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 30px; right: 40px; font-size: 3rem; color: rgba(255, 255, 255, 0.1); }
+        .review-content { font-size: 1.1rem; color: var(--white); font-style: italic; font-weight: 300; line-height: 1.8; flex-grow: 1; }
+        .review-author { font-weight: 600; color: var(--accent); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 15px; }
+        .review-author::before { content: ''; width: 30px; height: 1px; background: var(--white); opacity: 0.3; }
 
         /* --- Local SEO Block --- */
-        .local-seo-section {
-            background: var(--white);
-            padding: 60px 0;
-            border-top: 1px solid #eee;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .landmark-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .landmark-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background: #fdfdfd;
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .landmark-item:hover {
-            background: #fff;
-            box-shadow: var(--shadow);
-        }
-
-        .landmark-item i {
-            font-size: 1.5rem;
-            color: var(--accent);
-            width: 30px;
-            text-align: center;
-        }
-
-        .landmark-info h4 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-
-        .landmark-info p {
-            font-size: 0.85rem;
-            color: #888;
-            margin: 0;
-        }
+        .local-seo-section { background: var(--white); padding: 60px 0; border-top: 1px solid #eee; width: 100%; overflow: hidden; }
+        .landmark-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .landmark-item { display: flex; align-items: center; gap: 15px; padding: 20px; background: #fdfdfd; border-radius: 10px; transition: var(--transition); }
+        .landmark-item:hover { background: #fff; box-shadow: var(--shadow); }
+        .landmark-item i { font-size: 1.5rem; color: var(--accent); width: 30px; text-align: center; }
+        .landmark-info h4 { font-size: 1rem; margin-bottom: 5px; color: var(--primary); }
+        .landmark-info p { font-size: 0.85rem; color: #888; margin: 0; }
 
         /* --- Contact --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 80px;
-        }
-
-        .contact-info {
-            padding: 60px;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            box-sizing: border-box;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .info-item i {
-            font-size: 2rem;
-            color: var(--primary);
-            width: 30px;
-        }
-
-        .info-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
-        
-        .info-item p {
-            color: #666;
-            font-weight: 300;
-        }
-
-        /* Pulse Animation for Line Button */
+        .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 80px; }
+        .contact-info { padding: 60px; background: var(--white); box-shadow: var(--shadow); box-sizing: border-box; }
+        .info-item { display: flex; gap: 30px; margin-bottom: 50px; }
+        .info-item i { font-size: 2rem; color: var(--primary); width: 30px; }
+        .info-item h4 { font-size: 1.3rem; margin-bottom: 15px; color: var(--primary); letter-spacing: 1px; }
+        .info-item p { color: #666; font-weight: 300; }
         @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 185, 0, 0.4);
-                transform: scale(1);
-            }
-            70% {
-                box-shadow: 0 0 0 12px rgba(0, 185, 0, 0);
-                transform: scale(1.03);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 185, 0, 0);
-                transform: scale(1);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(0, 185, 0, 0.4); transform: scale(1); }
+            70% { box-shadow: 0 0 0 12px rgba(0, 185, 0, 0); transform: scale(1.03); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 185, 0, 0); transform: scale(1); }
         }
-
-        .line-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: #00B900;
-            color: white;
-            padding: 12px 30px 12px 12px;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 8px;
-            margin-top: 15px;
-            transition: var(--transition);
-            font-size: 1rem;
-            letter-spacing: 1px;
-            /* Add animation */
-            animation: pulse-glow 2.5s infinite ease-in-out;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .line-btn img {
-            height: 45px;
-            width: 45px;
-            border-radius: 4px;
-        }
-
-        .line-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,185,0,0.2);
-            /* Pause animation on hover */
-            animation: none;
-        }
-
-        .map-container {
-            height: 100%;
-            min-height: 550px;
-            box-shadow: var(--shadow-hover);
-            filter: grayscale(20%) contrast(1.1);
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .map-container iframe {
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 109, 91, 0.15); /* 淡淡的深綠色陰影 */
-        }
+        .line-btn { display: inline-flex; align-items: center; gap: 15px; background: #00B900; color: white; padding: 12px 30px 12px 12px; text-decoration: none; font-weight: 700; border-radius: 8px; margin-top: 15px; transition: var(--transition); font-size: 1rem; letter-spacing: 1px; animation: pulse-glow 2.5s infinite ease-in-out; max-width: 100%; box-sizing: border-box; }
+        .line-btn img { height: 45px; width: 45px; border-radius: 4px; }
+        .line-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,185,0,0.2); animation: none; }
+        .map-container { height: 100%; min-height: 550px; box-shadow: var(--shadow-hover); filter: grayscale(20%) contrast(1.1); width: 100%; box-sizing: border-box; }
+        .map-container iframe { border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 109, 91, 0.15); }
 
         /* --- FAB & Footer --- */
-        .fab-container {
-            position: fixed;
-            bottom: 50px;
-            right: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 1000;
-            pointer-events: none; /* 允許點擊穿過容器，除非點擊到按鈕 */
-        }
-
-        .fab {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            transition: var(--transition);
-            font-size: 1.6rem;
-            pointer-events: auto; /* 恢復按鈕點擊 */
-            position: relative;
-        }
-
-        .fab:hover {
-            transform: translateY(-8px) scale(1.05);
-        }
-
+        .fab-container { position: fixed; bottom: 50px; right: 50px; display: flex; flex-direction: column; gap: 20px; z-index: 1000; pointer-events: none; }
+        .fab { width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; text-decoration: none; box-shadow: 0 15px 35px rgba(0,0,0,0.15); transition: var(--transition); font-size: 1.6rem; pointer-events: auto; position: relative; }
+        .fab:hover { transform: translateY(-8px) scale(1.05); }
         .fab.line { background-color: #00B900; }
         .fab.fb { background-color: #1877F2; }
         .fab.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-            width: 100%;
-        }
-
-        footer h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 5px;
-        }
-
-        footer p {
-            opacity: 0.5;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            font-weight: 300;
-        }
+        footer { background: var(--dark); color: white; text-align: center; padding: 100px 0; width: 100%; }
+        footer h3 { font-size: 2.5rem; margin-bottom: 20px; letter-spacing: 5px; }
+        footer p { opacity: 0.5; font-size: 0.85rem; letter-spacing: 2px; font-weight: 300; }
 
         /* Responsive */
         @media (max-width: 1200px) {
             .about-magazine, .contact-grid { gap: 50px; }
             .hero-title { font-size: 4rem; }
         }
-
         @media (max-width: 992px) {
             .about-magazine, .contact-grid, .rules-wrapper { grid-template-columns: 1fr; }
             .magazine-content { padding-right: 0; order: 2; }
             .magazine-img-wrapper { height: 450px; order: 1; }
             .nav-links { display: none; }
             .menu-toggle { display: flex; }
-            
             nav { padding: 25px 40px; }
             nav.scrolled { padding: 15px 40px; }
-            
             .hero-title { font-size: 3rem; letter-spacing: 5px; }
             section { padding: 100px 0; }
-            
             .review-card { width: 320px; padding: 30px; }
         }
-
         @media (max-width: 768px) {
             .section-title h2 { font-size: 2.5rem; }
             .magazine-title { font-size: 2.5rem; }
             .slide { height: 500px; }
             .pricing-table th, .pricing-table td { padding: 20px 15px; font-size: 0.9rem; }
             .highlight-price { font-size: 1.3rem; }
-            
-            /* FAB 調整以防止溢出與遮擋 */
-            .fab-container { 
-                bottom: 20px; 
-                right: 20px; 
-                gap: 15px;
-            }
-            .fab { 
-                width: 50px; 
-                height: 50px; 
-                font-size: 1.2rem; 
-            }
-            
-            /* 防止潛在的 Tooltip 推開網頁 */
-            .fab::after {
-                display: none !important; /* 手機版通常不顯示 hover tooltip */
-            }
-
-            /* 設施指南網格化優化 */
-            .amenities-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px 10px;
-            }
-            .amenity-box i {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-            .amenity-box span {
-                font-size: 0.75rem;
-                display: block;
-                line-height: 1.2;
-            }
-
-            .contact-info {
-                padding: 40px 25px;
-            }
-            
-            .magazine-img-wrapper {
-                height: 350px;
-            }
+            .fab-container { bottom: 20px; right: 20px; gap: 15px; }
+            .fab { width: 50px; height: 50px; font-size: 1.2rem; }
+            .fab::after { display: none !important; }
+            .amenities-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 10px; }
+            .amenity-box i { font-size: 1.5rem; margin-bottom: 8px; }
+            .amenity-box span { font-size: 0.75rem; display: block; line-height: 1.2; }
+            .contact-info { padding: 40px 25px; }
+            .magazine-img-wrapper { height: 350px; }
         }
-
         @media (max-width: 480px) {
             .hero-title { font-size: 2.2rem; letter-spacing: 3px; }
             .section-title h2 { font-size: 2rem; }
@@ -1458,12 +451,10 @@
 </head>
 <body>
 
-    <!-- 植物裝飾 -->
-    <i class="fas fa-leaf leaf-decoration leaf-1" style="font-size: 350px; color: var(--primary);"></i>
-    <i class="fas fa-seedling leaf-decoration leaf-2" style="font-size: 450px; color: var(--primary);"></i>
-    <i class="fab fa-pagelines leaf-decoration leaf-3" style="font-size: 300px; color: var(--primary);"></i>
+    <i class="fas fa-leaf leaf-decoration leaf-1" style="font-size: 350px; color: var(--primary); position: absolute; opacity: 0.08; pointer-events: none; top: 10%; right: -5%; z-index: 1;"></i>
+    <i class="fas fa-seedling leaf-decoration leaf-2" style="font-size: 450px; color: var(--primary); position: absolute; opacity: 0.08; pointer-events: none; bottom: 5%; left: -10%; z-index: 1;"></i>
+    <i class="fab fa-pagelines leaf-decoration leaf-3" style="font-size: 300px; color: var(--primary); position: absolute; opacity: 0.05; pointer-events: none; top: 40%; left: -5%; z-index: 1; transform: rotate(45deg);"></i>
 
-    <!-- Navigation -->
     <nav id="navbar">
         <a href="#home" class="logo">
             <img src="photo/hengchun-jungle-house-logo.webp" alt="迪噢叢林旅宿-恆春包棟首選-Logo" width="50" height="50">
@@ -1488,7 +479,6 @@
         </ul>
     </nav>
 
-    <!-- Hero Banner -->
     <header id="home" class="hero">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1500" style="margin-top: 100px;">
             <h1 class="hero-title serif">墾丁包棟首選 The Jungle House</h1>
@@ -1497,7 +487,6 @@
         </div>
     </header>
 
-    <!-- About Section (Magazine Style) -->
     <section id="about">
         <div class="sunbeam-container">
             <div class="beam"></div>
@@ -1505,7 +494,6 @@
             <div class="beam"></div>
             <div class="beam"></div>
         </div>
-        <!-- SVG Divider -->
         <div class="section-divider divider-top">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120c64.31-27.12,143.23-28.53,207.19-22.15C253.3,101.9,292,112.55,321.39,56.44Z" class="shape-fill"></path>
@@ -1529,7 +517,6 @@
                 </div>
             </div>
 
-            <!-- Video Player Block -->
             <div class="video-block" style="margin-top: 150px;" data-aos="fade-up">
                 <div class="section-title">
                     <h2 class="serif" style="font-size: 2.2rem; color: var(--primary);">走進迪噢叢林：民宿實景直擊</h2>
@@ -1540,7 +527,6 @@
                 </div>
             </div>
 
-            <!-- Public Space Carousel -->
             <div class="carousel-container" id="shared-space" data-aos="fade-up">
                 <div class="section-title">
                     <span>Public Space</span>
@@ -1549,25 +535,15 @@
                 </div>
                 <div class="carousel-wrapper">
                     <div class="carousel-track" id="carouselTrack">
-                        <!-- Slide 1 -->
                         <a href="photo/public/hengchun-jungle-house-living-room.webp" data-fancybox="public" data-caption="恆春包棟民宿公共空間-客廳與KTV" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-living-room.webp')" aria-label="恆春包棟民宿公共空間-客廳與KTV"></a>
-                        <!-- Slide 2 -->
                         <a href="photo/public/hengchun-jungle-house-kitchen.webp" data-fancybox="public" data-caption="恆春包棟民宿-開放式廚房" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-kitchen.webp')" aria-label="恆春包棟民宿-開放式廚房"></a>
-                        <!-- Slide 3 -->
                         <a href="photo/public/hengchun-jungle-house-dining-area.webp" data-fancybox="public" data-caption="恆春包棟民宿-寬敞用餐區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-dining-area.webp')" aria-label="恆春包棟民宿-寬敞用餐區"></a>
-                        <!-- Slide 4 -->
                         <a href="photo/public/hengchun-jungle-house-bbq.webp" data-fancybox="public" data-caption="恆春包棟民宿-專業烤肉區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-bbq.webp')" aria-label="恆春包棟民宿-專業烤肉區"></a>
-                        <!-- Slide 5 -->
                         <a href="photo/public/hengchun-jungle-house-mahjong.webp" data-fancybox="public" data-caption="恆春包棟民宿-自動麻將桌" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-mahjong.webp')" aria-label="恆春包棟民宿-自動麻將桌"></a>
-                        <!-- Slide 6 -->
                         <a href="photo/public/hengchun-jungle-house-garden.webp" data-fancybox="public" data-caption="恆春包棟民宿-戶外大草皮" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-garden.webp')" aria-label="恆春包棟民宿-戶外大草皮"></a>
-                        <!-- Slide 7 -->
                         <a href="photo/public/hengchun-jungle-house-lobby-ktv.webp" data-fancybox="public" data-caption="恆春包棟民宿-KTV影音娛樂區" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-lobby-ktv.webp')" aria-label="恆春包棟民宿-KTV影音娛樂區"></a>
-                        <!-- Slide 8 -->
                         <a href="photo/public/hengchun-jungle-house-interior-decor.webp" data-fancybox="public" data-caption="恆春包棟民宿-室內設計細節" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-interior-decor.webp')" aria-label="恆春包棟民宿-室內設計細節"></a>
-                        <!-- Slide 9 -->
                         <a href="photo/public/hengchun-jungle-house-entrance.webp" data-fancybox="public" data-caption="恆春包棟民宿-大門入口" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-entrance.webp')" aria-label="恆春包棟民宿-大門入口"></a>
-                        <!-- Slide 10 -->
                         <a href="photo/public/hengchun-jungle-house-hallway.webp" data-fancybox="public" data-caption="恆春包棟民宿-公共區域走廊" class="slide" style="background-image: url('photo/public/hengchun-jungle-house-hallway.webp')" aria-label="恆春包棟民宿-公共區域走廊"></a>
                     </div>
                     <button class="carousel-btn prev" id="prevBtn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
@@ -1577,7 +553,6 @@
         </div>
     </section>
 
-    <!-- Room Showcase -->
     <section id="rooms" style="background-color: #fff;">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -1587,7 +562,6 @@
             </div>
 
             <div class="room-grid">
-                <!-- Room 1 -->
                 <div class="room-card" data-aos="fade-up">
                     <a href="photo/double/hengchun-jungle-house-double-room.webp" data-fancybox="double" data-caption="恆春包棟民宿-精緻雙人房" aria-label="查看精緻雙人房詳情">
                         <div class="room-img" style="background-image: url('photo/double/hengchun-jungle-house-double-room.webp')"></div>
@@ -1605,7 +579,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 2 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
                     <a href="photo/quad/hengchun-jungle-house-quad-room.webp" data-fancybox="quad" data-caption="恆春包棟民宿-溫馨四人房" aria-label="查看溫馨四人房詳情">
                         <div class="room-img" style="background-image: url('photo/quad/hengchun-jungle-house-quad-room.webp')"></div>
@@ -1623,7 +596,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 3 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
                     <a href="photo/loft-6/hengchun-jungle-house-loft-6-person-room.webp" data-fancybox="loft-6" data-caption="恆春包棟民宿-樓中樓六人房" aria-label="查看樓中樓六人房詳情">
                         <div class="room-img" style="background-image: url('photo/loft-6/hengchun-jungle-house-loft-6-person-room.webp')"></div>
@@ -1643,7 +615,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 4 -->
                 <div class="room-card" data-aos="fade-up">
                     <a href="photo/loft-4/hengchun-jungle-house-loft-4-person-room.webp" data-fancybox="loft-4" data-caption="恆春包棟民宿-樓中樓四人房" aria-label="查看樓中樓四人房詳情">
                         <div class="room-img" style="background-image: url('photo/loft-4/hengchun-jungle-house-loft-4-person-room.webp')"></div>
@@ -1662,7 +633,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 5 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="100">
                     <a href="photo/loft-family/hengchun-jungle-house-loft-family-room.webp" data-fancybox="loft-family" data-caption="恆春包棟民宿-樓中樓家庭房" aria-label="查看樓中樓家庭房詳情">
                         <div class="room-img" style="background-image: url('photo/loft-family/hengchun-jungle-house-loft-family-room.webp')"></div>
@@ -1679,7 +649,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 6 -->
                 <div class="room-card" data-aos="fade-up" data-aos-delay="200">
                     <a href="photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.webp" data-fancybox="kids-pink" data-caption="恆春包棟民宿-親子溜滑梯房(粉)" aria-label="查看親子溜滑梯房(粉)詳情">
                         <div class="room-img" style="background-image: url('photo/kids-pink/hengchun-jungle-house-kids-slide-room-pink.webp')"></div>
@@ -1698,7 +667,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Room 7 -->
                 <div class="room-card" data-aos="fade-up">
                     <a href="photo/kids-green/hengchun-jungle-house-kids-slide-room-green.webp" data-fancybox="kids-green" data-caption="恆春包棟民宿-親子溜滑梯房(綠)" aria-label="查看親子溜滑梯房(綠)詳情">
                         <div class="room-img" style="background-image: url('photo/kids-green/hengchun-jungle-house-kids-slide-room-green.webp')"></div>
@@ -1719,7 +687,6 @@
                 </div>
             </div>
 
-            <!-- Global Amenities -->
             <div class="global-amenities" data-aos="fade-up">
                 <h2 class="serif">包棟設施指南</h2>
                 <div class="amenities-grid">
@@ -1744,7 +711,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing">
         <div class="leaf-container" id="leafContainer"></div>
         <div class="container">
@@ -1784,7 +750,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq" style="background-color: #f9f9f9;">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -1822,11 +787,14 @@
                     <h4>Q7：如何確認保留房間與預約？</h4>
                     <p>A：您可以點擊網頁上的「一鍵加 LINE 預約」與我們聯繫. 我們提供最即時的檔期查詢服務，為您保留這片專屬的墾丁渡假秘境.</p>
                 </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Q8：包棟真的只有我們一組客人嗎？會有管家同住嗎？</h4>
+                    <p>A：我們一天只接待一組客人，包棟期間整棟民宿都由您們獨享。管家幫忙CHECK IN 後會離開，不會在現場，保證您和家人朋友擁有百分百的隱私與自在空間。</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rules Section -->
     <section id="rules" style="background-color: var(--dark); color: white;">
         <div class="section-divider divider-top" style="transform: rotate(0deg); top: -1px;">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="fill: var(--light);">
@@ -1877,7 +845,6 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
     <section id="reviews">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -1904,13 +871,11 @@
 
             <div class="reviews-scroll-wrapper" id="reviewsScrollWrapper">
                 <div class="reviews-grid" id="reviewsGrid">
-                    <!-- Reviews will be loaded by JS -->
-                </div>
+                    </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -1954,7 +919,6 @@
         </div>
     </section>
 
-    <!-- Local SEO Landmarks Block -->
     <section class="local-seo-section">
         <div class="container">
             <div class="section-title" data-aos="fade-up" style="margin-bottom: 50px;">
@@ -2017,31 +981,22 @@
     <footer>
         <div class="container">
             <h3 class="serif">The Jungle House</h3>
-            <p>&copy; 2020 迪噢叢林旅宿. Designed for the wild at heart.</p>
+            <p>© 2020 迪噢叢林旅宿. Designed for the wild at heart.</p>
         </div>
     </footer>
 
-    <!-- JS Libraries -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Fancybox 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
         // Init Fancybox
         Fancybox.bind("[data-fancybox]", {
-            // Your custom options
-            Thumbs: {
-                type: "modern"
-            }
+            Thumbs: { type: "modern" }
         });
 
         // AOS Animation
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 1000, once: true, offset: 100 });
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -2098,17 +1053,31 @@
         }, 6000);
 
         // Reviews
-        const reviewsPool = [
-            { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊.", stars: 5 },
-            { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動. 民宿主人的接待也很熱情，值得推薦！", stars: 5 },
-            { author: "張小美", content: "房間設計很有質感，樓中樓的格局小孩很喜歡. 步行就能到全聯，採買食材非常方便.", stars: 5 },
-            { author: "Kevin Wang", content: "民宿設施非常齊全，特別是那個專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦給要找包棟民宿的朋友.", stars: 5 },
-            { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服. 主人非常有耐心溝通，推推！", stars: 5 }
+const reviewsPool = [
+            { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
+            { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
+            { author: "張小美", content: "房間設計很有質感，樓中樓格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
+            { author: "Kevin Wang", content: "民宿設施非常齊全，特別是專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦。", stars: 5 },
+            { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服。主人非常有耐心，推推！", stars: 5 },
+            { author: "Chen J.", content: "環境清幽且非常有設計感，包棟空間很大完全不會擁擠。廚房設備應有盡有，煮食方便。", stars: 5 },
+            { author: "李大頭", content: "墾丁包棟首選！老闆人超客氣，房間打掃得一塵不染。KTV歌單很新，大家唱得很開心。", stars: 5 },
+            { author: "Hsuan Hsuan", content: "親子溜滑梯房真的很吸睛，小朋友玩瘋了！民宿位置鄰近恆春市區，鬧中取靜的絕佳選擇。", stars: 5 },
+            { author: "曾小弟", content: "大草皮很適合狗狗放電，民宿內裝非常有質感，木質色調讓人很放鬆，下次一定會再來。", stars: 5 },
+            { author: "M. Wu", content: "CP值超高的包棟別墅！音響設備極佳，烤肉區規劃得很完善。是我們公司旅遊最滿意的一次。", stars: 5 },
+            { author: "阿榮", content: "整棟採光超級好，早上在陽光中醒來的感覺太棒了。特別喜歡開放式廚房的設計。", stars: 5 },
+            { author: "Linda", content: "跟朋友來這裡慶生，老闆還貼心幫忙準備冰塊。環境真的很美，拍照隨便拍都像雜誌。", stars: 5 },
+            { author: "戴先生", content: "電動麻將桌真的是包棟救星，大家玩得不亦樂乎。房間冷氣夠強，這對恆春夏天太重要了。", stars: 5 },
+            { author: "Sarah Li", content: "完全超出預期的住宿體驗！家具很有質感，床墊軟硬適中，這是我住過最乾淨的包棟民宿。", stars: 5 },
+            { author: "小周", content: "位置極佳，開車不到三分鐘就有全聯跟超商。晚上在庭院吹風喝酒聊天，這才是度假。", stars: 5 },
+            { author: "阿翔", content: "音響效果真的沒話說，喜歡唱歌的朋友選這間絕對不會後悔。隔音也做得不錯，很有隱私。", stars: 5 },
+            { author: "蔡小姐", content: "寵物友善民宿中數一數二的高質感！沒有異味，草皮也很整潔。毛孩住得比我還開心。", stars: 5 },
+            { author: "Jerry H.", content: "老闆回覆速度很快，溝通過程很順利。設施維護得很好，感覺是有在用心經營的民宿。", stars: 5 },
+            { author: "小雅", content: "很適合多個家庭一起來，房型很多樣化，每個人都能選到喜歡的房間。停車也方便。", stars: 5 },
+            { author: "郭大俠", content: "這間民宿的每個角落都很好拍。烤肉區有遮陽遮雨，設備高級。墾丁包棟推薦首選！", stars: 5 }
         ];
 
         const reviewsGrid = document.getElementById('reviewsGrid');
         
-        // Pick 3 random 5-star reviews from the pool
         const shuffledReviews = [...reviewsPool].sort(() => 0.5 - Math.random());
         const selectedReviews = shuffledReviews.slice(0, 3);
 
@@ -2136,12 +1105,8 @@
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
         });
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
         slider.addEventListener('mousemove', (e) => {
             if(!isDown) return;
             e.preventDefault();
