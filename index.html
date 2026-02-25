@@ -100,9 +100,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">    
     <style>
         :root {
             --primary: #006D5B; /* 深叢林綠 */
@@ -984,109 +984,209 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
     <script>
-        // 確保所有資源（包括 defer 的 JS 檔案）都載入完成後才執行
-        window.addEventListener('load', function() {
-            
-            // 1. 初始化 Fancybox
-            Fancybox.bind("[data-fancybox]", {
-                Thumbs: { type: "modern" }
-            });
-            
-            // 2. 初始化 AOS 動畫
-            AOS.init({ duration: 1000, once: true, offset: 100 });
+        // Init Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            Thumbs: { type: "modern" }
+        });
 
-            // 3. Navbar 捲動效果
-            window.addEventListener('scroll', function() {
-                const nav = document.getElementById('navbar');
-                if (window.scrollY > 100) {
-                    nav.classList.add('scrolled');
+        // AOS Animation
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('is-active');
+        });
+
+        // Auto close mobile menu
+        document.querySelectorAll('.nav-links a').forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Carousel Logic
+        const track = document.getElementById('carouselTrack');
+        const slides = Array.from(track.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentSlideIndex = 0;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+
+        setInterval(() => {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateCarousel();
+        }, 6000);
+
+        // Reviews
+const reviewsPool = [
+            { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
+            { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
+            { author: "張小美", content: "房間設計很有質感，樓中樓格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
+            { author: "Kevin Wang", content: "民宿設施非常齊全，特別是專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦。", stars: 5 },
+            { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服。主人非常有耐心，推推！", stars: 5 },
+            { author: "Chen J.", content: "環境清幽且非常有設計感，包棟空間很大完全不會擁擠。廚房設備應有盡有，煮食方便。", stars: 5 },
+            { author: "李大頭", content: "墾丁包棟首選！老闆人超客氣，房間打掃得一塵不染。KTV歌單很新，大家唱得很開心。", stars: 5 },
+            { author: "Hsuan Hsuan", content: "親子溜滑梯房真的很吸睛，小朋友玩瘋了！民宿位置鄰近恆春市區，鬧中取靜的絕佳選擇。", stars: 5 },
+            { author: "曾小弟", content: "大草皮很適合狗狗放電，民宿內裝非常有質感，木質色調讓人很放鬆，下次一定會再來。", stars: 5 },
+            { author: "M. Wu", content: "CP值超高的包棟別墅！音響設備極佳，烤肉區規劃得很完善。是我們公司旅遊最滿意的一次。", stars: 5 },
+            { author: "阿榮", content: "整棟採光超級好，早上在陽光中醒來的感覺太棒了。特別喜歡開放式廚房的設計。", stars: 5 },
+            { author: "Linda", content: "跟朋友來這裡慶生，老闆還貼心幫忙準備冰塊。環境真的很美，拍照隨便拍都像雜誌。", stars: 5 },
+            { author: "戴先生", content: "電動麻將桌真的是包棟救星，大家玩得不亦樂乎。房間冷氣夠強，這對恆春夏天太重要了。", stars: 5 },
+            { author: "Sarah Li", content: "完全超出預期的住宿體驗！家具很有質感，床墊軟硬適中，這是我住過最乾淨的包棟民宿。", stars: 5 },
+            { author: "小周", content: "位置極佳，開車不到三分鐘就有全聯跟超商。晚上在庭院吹風喝酒聊天，這才是度假。", stars: 5 },
+            { author: "阿翔", content: "音響效果真的沒話說，喜歡唱歌的朋友選這間絕對不會後悔。隔音也做得不錯，很有隱私。", stars: 5 },
+            { author: "蔡小姐", content: "寵物友善民宿中數一數二的高質感！沒有異味，草皮也很整潔。毛孩住得比我還開心。", stars: 5 },
+            { author: "Jerry H.", content: "老闆回覆速度很快，溝通過程很順利。設施維護得很好，感覺是有在用心經營的民宿。", stars: 5 },
+            { author: "小雅", content: "很適合多個家庭一起來，房型很多樣化，每個人都能選到喜歡的房間。停車也方便。", stars: 5 },
+            { author: "郭大俠", content: "這間民宿的每個角落都很好拍。烤肉區有遮陽遮雨，設備高級。墾丁包棟推薦首選！", stars: 5 }
+        ];
+
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        
+        const shuffledReviews = [...reviewsPool].sort(() => 0.5 - Math.random());
+        const selectedReviews = shuffledReviews.slice(0, 3);
+
+        selectedReviews.forEach((review, index) => {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', index * 100);
+            card.innerHTML = `
+                <div class="review-content">"${review.content}"</div>
+                <div class="review-author">${review.author}</div>
+            `;
+            reviewsGrid.appendChild(card);
+        });
+
+        // Horizontal Scroll Drag Support
+        const slider = document.getElementById('reviewsScrollWrapper');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; });
+        slider.addEventListener('mouseup', () => { isDown = false; });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Falling Leaves
+        const leafContainer = document.getElementById('leafContainer');
+        const leafIcons = ['fa-leaf', 'fa-seedling'];
+        let leafInterval;
+
+        function createLeaf() {
+            const leaf = document.createElement('i');
+            leaf.className = `fas ${leafIcons[Math.floor(Math.random() * 2)]} falling-leaf`;
+            const duration = 5 + Math.random() * 5;
+            leaf.style.left = `${Math.random() * window.innerWidth}px`;
+            leaf.style.animationDuration = `${duration}s`;
+            leaf.style.fontSize = `${1 + Math.random() * 1.5}rem`;
+            leafContainer.appendChild(leaf);
+            setTimeout(() => leaf.remove(), duration * 1000);
+        }
+
+        const leafObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!leafInterval) leafInterval = setInterval(createLeaf, 800);
                 } else {
-                    nav.classList.remove('scrolled');
+                    clearInterval(leafInterval);
+                    leafInterval = null;
                 }
             });
+        }, { threshold: 0.1 });
+        leafObserver.observe(document.getElementById('pricing'));
 
-            // 4. 手機版選單切換
-            const menuToggle = document.getElementById('mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
+        // Paw Prints
+        const petSection = document.getElementById('petSection');
+        const pawContainer = document.getElementById('pawContainer');
 
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('is-active');
+        function createPawPrint(x, y, angle) {
+            const paw = document.createElement('i');
+            paw.className = 'fas fa-paw paw-print';
+            paw.style.left = `${x}px`;
+            paw.style.top = `${y}px`;
+            paw.style.transform = `rotate(${angle}deg)`;
+            pawContainer.appendChild(paw);
+            setTimeout(() => paw.remove(), 3000);
+        }
+
+        function startPawPatrol() {
+            const rect = petSection.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const startX = -20, startY = Math.random() * height, endX = width + 20, endY = Math.random() * height;
+            const steps = 15;
+            const stepX = (endX - startX) / steps, stepY = (endY - startY) / steps;
+            const angle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
+
+            let step = 0;
+            const interval = setInterval(() => {
+                const offset = (step % 2 === 0 ? 25 : -25);
+                const nx = Math.cos((angle - 180) * Math.PI / 180) * offset;
+                const ny = Math.sin((angle - 180) * Math.PI / 180) * offset;
+                createPawPrint(startX + stepX * step + nx, startY + stepY * step + ny, angle);
+                step++;
+                if (step >= steps) clearInterval(interval);
+            }, 400);
+        }
+
+        const petObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startPawPatrol();
+                    this.pawTimer = setInterval(startPawPatrol, 8000);
+                } else {
+                    clearInterval(this.pawTimer);
+                }
             });
-
-            // 5. 點擊選單連結後自動關閉手機選單
-            document.querySelectorAll('.nav-links a').forEach(item => {
-                item.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
-
-            // 6. 公共空間輪播邏輯 (Carousel)
-            const track = document.getElementById('carouselTrack');
-            const slides = Array.from(track.children);
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            let currentSlideIndex = 0;
-
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-            }
-
-            nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                updateCarousel();
-            });
-
-            prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-                updateCarousel();
-            });
-
-            setInterval(() => {
-                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                updateCarousel();
-            }, 6000);
-
-            // 7. 隨機好評系統 (20段精選)
-            const reviewsPool = [
-                { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
-                { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
-                { author: "張小美", content: "房間設計很有質感，樓中樓格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
-                { author: "Kevin Wang", content: "民宿設施非常齊全，特別是專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦。", stars: 5 },
-                { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服。主人非常有耐心，推推！", stars: 5 },
-                { author: "Chen J.", content: "環境清幽且非常有設計感，包棟空間很大完全不會擁擠。廚房設備應有盡有，煮食方便。", stars: 5 },
-                { author: "李大頭", content: "墾丁包棟首選！老闆人超客氣，房間打掃得一塵不染。KTV歌單很新，大家唱得很開心。", stars: 5 },
-                { author: "Hsuan Hsuan", content: "親子溜滑梯房真的很吸睛，小朋友玩瘋了！民宿位置鄰近恆春市區，鬧中取靜的絕佳選擇。", stars: 5 },
-                { author: "曾小弟", content: "大草皮很適合狗狗放電，民宿內裝非常有質感，木質色調讓人很放鬆，下次一定會再來。", stars: 5 },
-                { author: "M. Wu", content: "CP值超高的包棟別墅！音響設備極佳，烤肉區規劃得很完善。是我們公司旅遊最滿意的一次。", stars: 5 },
-                { author: "阿榮", content: "整棟採光超級好，早上在陽光中醒來的感覺太棒了。特別喜歡開放式廚房的設計。", stars: 5 },
-                { author: "Linda", content: "跟朋友來這裡慶生，老闆還貼心幫忙準備冰塊。環境真的很美，拍照隨便拍都像雜誌。", stars: 5 },
-                { author: "戴先生", content: "電動麻將桌真的是包棟救星，大家玩得不亦樂乎。房間冷氣夠強，這對恆春夏天太重要了。", stars: 5 },
-                { author: "Sarah Li", content: "完全超出預期的住宿體驗！家具很有質感，床墊軟硬適中，這是我住過最乾淨的包棟民宿。", stars: 5 },
-                { author: "小周", content: "位置極佳，開車不到三分鐘就有全聯跟超商。晚上在庭院吹風喝酒聊天，這才是度假。", stars: 5 },
-                { author: "阿翔", content: "音響效果真的沒話說，喜歡唱歌的朋友選這間絕對不會後悔。隔音也做得不錯，很有隱私。", stars: 5 },
-                { author: "蔡小姐", content: "寵物友善民宿中數一數二的高質感！沒有異味，草皮也很整潔。毛孩住得比我還開心。", stars: 5 },
-                { author: "Jerry H.", content: "老闆回覆速度很快，溝通過程很順利。設施維護得很好，感覺是有在用心經營的民宿。", stars: 5 },
-                { author: "小雅", content: "很適合多個家庭一起來，房型很多樣化，每個人都能選到喜歡的房間。停車也方便。", stars: 5 },
-                { author: "郭大俠", content: "這間民宿的每個角落都很好拍。烤肉區有遮陽遮雨，設備高級。墾丁包棟推薦首選！", stars: 5 }
-            ];
-
-            const reviewsGrid = document.getElementById('reviewsGrid');
-            const shuffledReviews = [...reviewsPool].sort(() => 0.5 - Math.random());
-            const selectedReviews = shuffledReviews.slice(0, 3);
-
-            selectedReviews.forEach((review, index) => {
-                const card = document.createElement('div');
-                card.className = 'review-card';
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', index * 100);
-                card.innerHTML = `
-                    <div class="review-content">"${review.content}"
+        }, { threshold: 0.1 });
+        petObserver.observe(petSection);
+    </script>
 </body>
 </html>
