@@ -142,7 +142,7 @@
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 700; }
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 30px; position: relative; z-index: 2; box-sizing: border-box; }
 
-        /* --- 修正後的 Navigation 樣式 --- */
+        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0;
@@ -299,8 +299,7 @@
         /* --- Global Amenities --- */
         .global-amenities { margin-top: 150px; background: var(--white); padding: 100px 60px; box-shadow: var(--shadow); position: relative; }
         .global-amenities::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--primary); }
-        .global-amenities h3 { text-align: center; margin-bottom: 70px; font-size: 2.2rem; color: var(--primary); letter-spacing: 3px; }
-        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 50px; }
+        .global-amenities h2 { text-align: center; margin-bottom: 70px; font-size: 2.2rem; color: var(--primary); letter-spacing: 3px; width: 100%; }        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 50px; }
         .amenity-box { text-align: center; transition: var(--transition); }
         .amenity-box:hover { transform: translateY(-10px); }
         .amenity-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: block; transition: var(--transition); }
@@ -314,6 +313,120 @@
         .pricing-table th { background-color: var(--primary); color: white; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
         .pricing-table td { border-bottom: 1px solid #f5f5f5; font-size: 1.1rem; color: #555; }
         .highlight-price { color: var(--accent); font-weight: 700; font-size: 1.8rem; font-family: 'Playfair Display', serif; }
+
+        /* --- Calendar Styles --- */
+        .calendar-section { margin-top: 80px; }
+        .calendar-container {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow-hover);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 109, 91, 0.08);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .calendar-header h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        .calendar-nav { display: flex; gap: 15px; }
+        .calendar-btn-nav {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .calendar-btn-nav:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 109, 91, 0.2);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        .calendar-weekday {
+            font-weight: 700;
+            color: var(--accent);
+            padding: 10px 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .calendar-day {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .calendar-day.booked {
+            background-color: #FFF0F0;
+            color: #D32F2F;
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+        .calendar-day.available {
+            background-color: #F8F9FA;
+            color: #ADB5BD;
+        }
+        .calendar-day.empty { visibility: hidden; }
+        .calendar-day.today { border: 2px solid var(--primary); color: var(--primary); font-weight: 700; }
+        
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+        .legend-box { width: 18px; height: 18px; border-radius: 4px; }
+        .legend-booked { background-color: #FFF0F0; border: 1px solid #FFCDD2; }
+        .legend-available { background-color: #F8F9FA; border: 1px solid #E9ECEF; }
+
+        .line-reserve-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #00B900;
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 20px rgba(0, 185, 0, 0.2);
+        }
+        .line-reserve-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 185, 0, 0.3);
+            background: #00a000;
+        }
+        .line-reserve-btn i { font-size: 1.4rem; }
 
         /* --- FAQ --- */
         .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-top: 50px; width: 100%; box-sizing: border-box; }
@@ -359,15 +472,6 @@
         .rating-badge { background: rgba(255, 255, 255, 0.1); padding: 15px 30px; border-radius: 50px; display: inline-flex; align-items: center; gap: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); }
         .rating-score { font-size: 2.2rem; font-weight: 700; color: var(--white); }
         .rating-stars { color: #FFD700; font-size: 1.2rem; }
-        .reviews-scroll-wrapper { width: 100%; overflow-x: auto; padding: 20px 0 60px 0; cursor: grab; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        .reviews-scroll-wrapper::-webkit-scrollbar { display: none; }
-        .reviews-grid { display: flex; gap: 30px; padding: 0 30px; width: max-content; }
-        .review-card { background: rgba(255, 255, 255, 0.08); width: 400px; padding: 50px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; gap: 25px; position: relative; transition: var(--transition); backdrop-filter: blur(5px); box-sizing: border-box; }
-        .review-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.12); }
-        .review-card::before { content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 30px; right: 40px; font-size: 3rem; color: rgba(255, 255, 255, 0.1); }
-        .review-content { font-size: 1.1rem; color: var(--white); font-style: italic; font-weight: 300; line-height: 1.8; flex-grow: 1; }
-        .review-author { font-weight: 600; color: var(--accent); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 15px; }
-        .review-author::before { content: ''; width: 30px; height: 1px; background: var(--white); opacity: 0.3; }
 
         /* --- Local SEO Block --- */
         .local-seo-section { background: var(--white); padding: 60px 0; border-top: 1px solid #eee; width: 100%; overflow: hidden; }
@@ -422,7 +526,6 @@
             nav.scrolled { padding: 15px 40px; }
             .hero-title { font-size: 3rem; letter-spacing: 5px; }
             section { padding: 100px 0; }
-            .review-card { width: 320px; padding: 30px; }
         }
         @media (max-width: 768px) {
             .section-title h2 { font-size: 2.5rem; }
@@ -438,6 +541,9 @@
             .amenity-box span { font-size: 0.75rem; display: block; line-height: 1.2; }
             .contact-info { padding: 40px 25px; }
             .magazine-img-wrapper { height: 350px; }
+            .calendar-container { padding: 20px; }
+            .calendar-day { font-size: 0.9rem; }
+            .calendar-weekday { font-size: 0.75rem; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 2.2rem; letter-spacing: 3px; }
@@ -746,6 +852,40 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="calendar-section" data-aos="fade-up">
+                <div class="section-title" style="margin-bottom: 50px;">
+                    <h2 class="serif" style="font-size: 2.2rem; color: var(--primary);">即時房況查詢</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h3 id="calendarMonth" class="serif">2024年 1月</h3>
+                        <div class="calendar-nav">
+                            <button id="prevMonth" class="calendar-btn-nav" aria-label="上個月"><i class="fas fa-chevron-left"></i></button>
+                            <button id="nextMonth" class="calendar-btn-nav" aria-label="下個月"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid">
+                        </div>
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <div class="legend-box legend-booked"></div>
+                            <span>已預訂 / Booked</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box legend-available"></div>
+                            <span>可預訂 / Available</span>
+                        </div>
+                    </div>
+                    <div class="calendar-footer">
+                        <a href="https://lin.ee/ONZERGg" target="_blank" class="line-reserve-btn" onclick="gtag('event', 'click_line_calendar', {'event_category': 'contact'});">
+                            <i class="fab fa-line"></i>
+                            <span>立即預約檔期</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -819,7 +959,7 @@
                         <li><strong>嚴禁煙火</strong>：民宿周邊為草原區，全面禁止施放煙火.</li>
                         <li><strong>慶祝規範</strong>：歡迎慶生活動，但請勿使用拉炮 or 噴條.</li>
                         <li><strong>全面禁菸</strong>：配合法令，室內空間全面禁止吸菸.</li>
-                        <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，違者一律報警.</li>
+                        <li><strong>違法禁令</strong>：嚴禁毒品、轟趴等違法行為，維者一律報警.</li>
                         <li><strong>寵物規範</strong>：攜帶寵物請務必提前告知.</li>
                         <li><strong>環境清潔</strong>：公共設施與廚房免費提供，使用後請歸位並做好垃圾分類. 若環境過於髒亂，將收取 NT$3000 起清潔費.</li>
                         <li><strong>押金制度</strong>：入住收取 NT$5000 押金，退房檢查無誤後全額退還.</li>
@@ -868,10 +1008,8 @@
                 </div>
             </div>
 
-            <div class="reviews-scroll-wrapper" id="reviewsScrollWrapper">
-                <div class="reviews-grid" id="reviewsGrid">
-                    </div>
-            </div>
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-ee937fab-0eb3-4d7d-a5ae-f6f7fcd641a9" data-elfsight-app-lazy></div>
         </div>
     </section>
 
@@ -989,204 +1127,211 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Init Fancybox
-        Fancybox.bind("[data-fancybox]", {
-            Thumbs: { type: "modern" }
-        });
-
-        // AOS Animation
+        // --- 1. UI 特效初始化 ---
+        Fancybox.bind("[data-fancybox]", { Thumbs: { type: "modern" } });
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
-        // Navbar scroll effect
+        // --- 2. 核心：Airbnb 房況同步 ---
+        let currentMonthView = new Date();
+        const realToday = new Date();
+        realToday.setHours(0,0,0,0); // 歸零時間以便比較日期
+        
+        let bookedDates = [];
+        const ICAL_URL = 'https://www.airbnb.com.tw/calendar/ical/41229558.ics?t=cd81ce2029b24885b361fdc4ab86f75b';
+
+        async function syncAirbnb() {
+            const statusTitle = document.getElementById('calendarMonth');
+            const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(ICAL_URL)}`;
+
+            try {
+                const response = await fetch(proxyUrl);
+                const text = await response.text();
+                if (text.includes("BEGIN:VCALENDAR")) {
+                    parseIcalUniversal(text);
+                    renderCalendar();
+                }
+            } catch (err) {
+                console.error("同步失敗:", err);
+                statusTitle.innerText = "⚠️ 房況同步失敗 (請LINE查詢)";
+                renderCalendar();
+            }
+        }
+
+        function parseIcalUniversal(text) {
+            bookedDates = [];
+            const events = text.split('BEGIN:VEVENT');
+            events.shift();
+            events.forEach(event => {
+                const startMatch = event.match(/DTSTART.*:(\d{8})/);
+                const endMatch = event.match(/DTEND.*:(\d{8})/);
+                if (startMatch && endMatch) {
+                    let d = new Date(startMatch[1].replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
+                    const dEnd = new Date(endMatch[1].replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
+                    while (d < dEnd) {
+                        bookedDates.push(new Date(d).toDateString());
+                        d.setDate(d.getDate() + 1);
+                    }
+                }
+            });
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const title = document.getElementById('calendarMonth');
+            const prevBtn = document.getElementById('prevMonth');
+            if (!grid) return;
+
+            const y = currentMonthView.getFullYear();
+            const m = currentMonthView.getMonth();
+            title.innerText = `${y}年 ${m + 1}月`;
+
+            if (y <= realToday.getFullYear() && m <= realToday.getMonth()) {
+                prevBtn.style.visibility = "hidden";
+            } else {
+                prevBtn.style.visibility = "visible";
+            }
+
+            grid.innerHTML = '';
+            ['日', '一', '二', '三', '四', '五', '六'].forEach(d => {
+                grid.innerHTML += `<div class="calendar-weekday" style="color: #D4A373; font-weight: bold;">${d}</div>`;
+            });
+
+            const firstDay = new Date(y, m, 1).getDay();
+            const daysInMonth = new Date(y, m + 1, 0).getDate();
+            for (let i = 0; i < firstDay; i++) grid.innerHTML += `<div class="calendar-day empty"></div>`;
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const date = new Date(y, m, i);
+                const dateStr = date.toDateString();
+                let cls = "calendar-day";
+                let style = "aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-weight: 500; font-size: 1rem; transition: all 0.3s;";
+                
+                if (date < realToday || bookedDates.includes(dateStr)) {
+                    cls += " booked";
+                    style += " background-color: #FFE5E5; color: #D32F2F; text-decoration: line-through; border: 1px solid #FFB3B3; opacity: 0.8;";
+                } else {
+                    cls += " available";
+                    style += " background-color: #F0FDF4; color: #166534; border: 1px solid #DCFCE7; cursor: pointer;";
+                }
+                
+                if (dateStr === realToday.toDateString()) {
+                    style += " border: 2px solid #006D5B; font-weight: 800;";
+                }
+                grid.innerHTML += `<div class="${cls}" style="${style}">${i}</div>`;
+            }
+        }
+
+        // --- 3. 啟動與 UI 邏輯 ---
+        window.onload = () => {
+            syncAirbnb(); // 同步 Airbnb 房況
+            
+            // 確保 LINE 按鈕置中與文字正確
+            const calendarFooter = document.querySelector('.calendar-footer');
+            if (calendarFooter) {
+                calendarFooter.style.textAlign = "center";
+                calendarFooter.style.marginTop = "30px";
+                const lineBtn = calendarFooter.querySelector('a');
+                if (lineBtn) {
+                    lineBtn.innerHTML = '<i class="fab fa-line"></i> 立即預約';
+                    lineBtn.style.display = "inline-flex";
+                }
+            }
+        };
+
+        document.getElementById('prevMonth').onclick = () => { 
+            currentMonthView.setMonth(currentMonthView.getMonth() - 1); 
+            renderCalendar(); 
+        };
+        document.getElementById('nextMonth').onclick = () => { 
+            currentMonthView.setMonth(currentMonthView.getMonth() + 1); 
+            renderCalendar(); 
+        };
+
+        // Navbar & Mobile Menu 邏輯
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
+        document.getElementById('mobile-menu').onclick = function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        };
 
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('is-active');
-        });
-
-        // Auto close mobile menu
-        document.querySelectorAll('.nav-links a').forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Carousel Logic
-        const track = document.getElementById('carouselTrack');
-        const slides = Array.from(track.children);
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        let currentSlideIndex = 0;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-        }
-
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            updateCarousel();
-        });
-
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
-        });
-
-        setInterval(() => {
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            updateCarousel();
-        }, 6000);
-
-        // Reviews
-const reviewsPool = [
-            { author: "Alice Chen", content: "非常舒適的包棟體驗！空間寬敞且乾淨，KTV和烤肉設施都很棒，適合家庭旅遊。", stars: 5 },
-            { author: "林先生", content: "寵物友善做得很好，一樓空間很適合狗狗活動。民宿主人的接待也很熱情，值得推薦！", stars: 5 },
-            { author: "張小美", content: "房間設計很有質感，樓中樓格局小孩很喜歡。步行就能到全聯，採買食材非常方便。", stars: 5 },
-            { author: "Kevin Wang", content: "民宿設施非常齊全，特別是專業的KTV系統，讓我們整晚唱得超盡興！強烈推薦。", stars: 5 },
-            { author: "王小姐", content: "第二次來了！草地一樣漂亮，帶狗狗來跑跑真的很舒服。主人非常有耐心，推推！", stars: 5 },
-            { author: "Chen J.", content: "環境清幽且非常有設計感，包棟空間很大完全不會擁擠。廚房設備應有盡有，煮食方便。", stars: 5 },
-            { author: "李大頭", content: "墾丁包棟首選！老闆人超客氣，房間打掃得一塵不染。KTV歌單很新，大家唱得很開心。", stars: 5 },
-            { author: "Hsuan Hsuan", content: "親子溜滑梯房真的很吸睛，小朋友玩瘋了！民宿位置鄰近恆春市區，鬧中取靜的絕佳選擇。", stars: 5 },
-            { author: "曾小弟", content: "大草皮很適合狗狗放電，民宿內裝非常有質感，木質色調讓人很放鬆，下次一定會再來。", stars: 5 },
-            { author: "M. Wu", content: "CP值超高的包棟別墅！音響設備極佳，烤肉區規劃得很完善。是我們公司旅遊最滿意的一次。", stars: 5 },
-            { author: "阿榮", content: "整棟採光超級好，早上在陽光中醒來的感覺太棒了。特別喜歡開放式廚房的設計。", stars: 5 },
-            { author: "Linda", content: "跟朋友來這裡慶生，老闆還貼心幫忙準備冰塊。環境真的很美，拍照隨便拍都像雜誌。", stars: 5 },
-            { author: "戴先生", content: "電動麻將桌真的是包棟救星，大家玩得不亦樂乎。房間冷氣夠強，這對恆春夏天太重要了。", stars: 5 },
-            { author: "Sarah Li", content: "完全超出預期的住宿體驗！家具很有質感，床墊軟硬適中，這是我住過最乾淨的包棟民宿。", stars: 5 },
-            { author: "小周", content: "位置極佳，開車不到三分鐘就有全聯跟超商。晚上在庭院吹風喝酒聊天，這才是度假。", stars: 5 },
-            { author: "阿翔", content: "音響效果真的沒話說，喜歡唱歌的朋友選這間絕對不會後悔。隔音也做得不錯，很有隱私。", stars: 5 },
-            { author: "蔡小姐", content: "寵物友善民宿中數一數二的高質感！沒有異味，草皮也很整潔。毛孩住得比我還開心。", stars: 5 },
-            { author: "Jerry H.", content: "老闆回覆速度很快，溝通過程很順利。設施維護得很好，感覺是有在用心經營的民宿。", stars: 5 },
-            { author: "小雅", content: "很適合多個家庭一起來，房型很多樣化，每個人都能選到喜歡的房間。停車也方便。", stars: 5 },
-            { author: "郭大俠", content: "這間民宿的每個角落都很好拍。烤肉區有遮陽遮雨，設備高級。墾丁包棟推薦首選！", stars: 5 }
-        ];
-
-        const reviewsGrid = document.getElementById('reviewsGrid');
-        
-        const shuffledReviews = [...reviewsPool].sort(() => 0.5 - Math.random());
-        const selectedReviews = shuffledReviews.slice(0, 3);
-
-        selectedReviews.forEach((review, index) => {
-            const card = document.createElement('div');
-            card.className = 'review-card';
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', index * 100);
-            card.innerHTML = `
-                <div class="review-content">"${review.content}"</div>
-                <div class="review-author">${review.author}</div>
-            `;
-            reviewsGrid.appendChild(card);
-        });
-
-        // Horizontal Scroll Drag Support
-        const slider = document.getElementById('reviewsScrollWrapper');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => { isDown = false; });
-        slider.addEventListener('mouseup', () => { isDown = false; });
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
-            slider.scrollLeft = scrollLeft - walk;
-        });
-
-        // Falling Leaves
+        // --- 4. 裝飾動畫特效 (落葉 & 毛孩腳印) ---
+        // 4.1 價目表落葉動畫
         const leafContainer = document.getElementById('leafContainer');
-        const leafIcons = ['fa-leaf', 'fa-seedling'];
-        let leafInterval;
-
-        function createLeaf() {
-            const leaf = document.createElement('i');
-            leaf.className = `fas ${leafIcons[Math.floor(Math.random() * 2)]} falling-leaf`;
-            const duration = 5 + Math.random() * 5;
-            leaf.style.left = `${Math.random() * window.innerWidth}px`;
-            leaf.style.animationDuration = `${duration}s`;
-            leaf.style.fontSize = `${1 + Math.random() * 1.5}rem`;
-            leafContainer.appendChild(leaf);
-            setTimeout(() => leaf.remove(), duration * 1000);
+        if (leafContainer) {
+            const leafIcons = ['fa-leaf', 'fa-seedling'];
+            let leafInterval;
+            function createLeaf() {
+                const leaf = document.createElement('i');
+                leaf.className = `fas ${leafIcons[Math.floor(Math.random() * 2)]} falling-leaf`;
+                const duration = 5 + Math.random() * 5;
+                leaf.style.left = `${Math.random() * window.innerWidth}px`;
+                leaf.style.animationDuration = `${duration}s`;
+                leaf.style.fontSize = `${1 + Math.random() * 1.5}rem`;
+                leafContainer.appendChild(leaf);
+                setTimeout(() => leaf.remove(), duration * 1000);
+            }
+            const leafObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!leafInterval) leafInterval = setInterval(createLeaf, 800);
+                    } else {
+                        clearInterval(leafInterval);
+                        leafInterval = null;
+                    }
+                });
+            }, { threshold: 0.1 });
+            const pricingSection = document.getElementById('pricing');
+            if (pricingSection) leafObserver.observe(pricingSection);
         }
 
-        const leafObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (!leafInterval) leafInterval = setInterval(createLeaf, 800);
-                } else {
-                    clearInterval(leafInterval);
-                    leafInterval = null;
-                }
-            });
-        }, { threshold: 0.1 });
-        leafObserver.observe(document.getElementById('pricing'));
-
-        // Paw Prints
+        // 4.2 寵物友善區腳印動畫
         const petSection = document.getElementById('petSection');
         const pawContainer = document.getElementById('pawContainer');
+        if (petSection && pawContainer) {
+            function createPawPrint(x, y, angle) {
+                const paw = document.createElement('i');
+                paw.className = 'fas fa-paw paw-print';
+                paw.style.left = `${x}px`;
+                paw.style.top = `${y}px`;
+                paw.style.transform = `rotate(${angle}deg)`;
+                pawContainer.appendChild(paw);
+                setTimeout(() => paw.remove(), 3000);
+            }
+            function startPawPatrol() {
+                const rect = petSection.getBoundingClientRect();
+                const width = rect.width;
+                const height = rect.height;
+                const startX = -20, startY = Math.random() * height, endX = width + 20, endY = Math.random() * height;
+                const steps = 15;
+                const stepX = (endX - startX) / steps, stepY = (endY - startY) / steps;
+                const angle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
 
-        function createPawPrint(x, y, angle) {
-            const paw = document.createElement('i');
-            paw.className = 'fas fa-paw paw-print';
-            paw.style.left = `${x}px`;
-            paw.style.top = `${y}px`;
-            paw.style.transform = `rotate(${angle}deg)`;
-            pawContainer.appendChild(paw);
-            setTimeout(() => paw.remove(), 3000);
+                let step = 0;
+                const interval = setInterval(() => {
+                    const offset = (step % 2 === 0 ? 25 : -25);
+                    const nx = Math.cos((angle - 180) * Math.PI / 180) * offset;
+                    const ny = Math.sin((angle - 180) * Math.PI / 180) * offset;
+                    createPawPrint(startX + stepX * step + nx, startY + stepY * step + ny, angle);
+                    step++;
+                    if (step >= steps) clearInterval(interval);
+                }, 400);
+            }
+            let pawTimer;
+            const petObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startPawPatrol();
+                        pawTimer = setInterval(startPawPatrol, 8000);
+                    } else {
+                        clearInterval(pawTimer);
+                    }
+                });
+            }, { threshold: 0.1 });
+            petObserver.observe(petSection);
         }
-
-        function startPawPatrol() {
-            const rect = petSection.getBoundingClientRect();
-            const width = rect.width;
-            const height = rect.height;
-            const startX = -20, startY = Math.random() * height, endX = width + 20, endY = Math.random() * height;
-            const steps = 15;
-            const stepX = (endX - startX) / steps, stepY = (endY - startY) / steps;
-            const angle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI) + 90;
-
-            let step = 0;
-            const interval = setInterval(() => {
-                const offset = (step % 2 === 0 ? 25 : -25);
-                const nx = Math.cos((angle - 180) * Math.PI / 180) * offset;
-                const ny = Math.sin((angle - 180) * Math.PI / 180) * offset;
-                createPawPrint(startX + stepX * step + nx, startY + stepY * step + ny, angle);
-                step++;
-                if (step >= steps) clearInterval(interval);
-            }, 400);
-        }
-
-        const petObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startPawPatrol();
-                    this.pawTimer = setInterval(startPawPatrol, 8000);
-                } else {
-                    clearInterval(this.pawTimer);
-                }
-            });
-        }, { threshold: 0.1 });
-        petObserver.observe(petSection);
     </script>
 </body>
 </html>
