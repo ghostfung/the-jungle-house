@@ -429,8 +429,23 @@
         .line-reserve-btn i { font-size: 1.4rem; }
 
         /* --- FAQ --- */
-        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 30px; margin-top: 50px; width: 100%; box-sizing: border-box; }
-        .faq-item { background: var(--white); padding: 35px; box-shadow: var(--shadow); border-radius: 8px; border-left: 4px solid var(--accent); transition: var(--transition); box-sizing: border-box; max-width: 100%; }
+/* --- FAQ 修正版 --- */
+.faq-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; /* 手機版強制單欄 */
+    gap: 20px; 
+    margin-top: 30px; 
+    width: 100%; 
+}
+.faq-item { 
+    background: var(--white); 
+    padding: 25px; 
+    box-shadow: var(--shadow); 
+    border-radius: 8px; 
+    border-left: 4px solid var(--accent); 
+    width: 100%; /* 確保唔會超出螢幕 */
+    box-sizing: border-box; /* 重要：防止 padding 撐開寬度 */
+}
         .faq-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
         .faq-item h4 { font-size: 1.1rem; color: var(--primary); margin-bottom: 15px; font-weight: 700; line-height: 1.6; }
         .faq-item p { font-size: 0.95rem; color: #555; line-height: 1.8; font-weight: 300; }
@@ -1253,9 +1268,21 @@
             if (window.scrollY > 100) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
-        document.getElementById('mobile-menu').onclick = function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        };
+// --- 手機選單開關邏輯 (加強版) ---
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+// 1. 撳三條線掣：開關選單
+mobileMenuBtn.onclick = function() {
+    navLinks.classList.toggle('active');
+};
+
+// 2. 撳選單入面任何一條 Link：自動收埋個選單
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.onclick = function() {
+        navLinks.classList.remove('active');
+    };
+});
 
         // --- 4. 裝飾動畫特效 (落葉 & 毛孩腳印) ---
         // 4.1 價目表落葉動畫
